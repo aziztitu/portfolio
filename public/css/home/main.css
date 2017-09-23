@@ -158,6 +158,17 @@
       padding: 10px;
       margin: 10px 30px 10px 30px;
       color: white; }
+      .content_object[sectionId="contact_me"] .contact_me_wrapper .contact_items_wrapper .contact_item.social_media {
+        padding: 5px 5px;
+        border-radius: 5px;
+        transition: all 0.3s linear; }
+        .content_object[sectionId="contact_me"] .contact_me_wrapper .contact_items_wrapper .contact_item.social_media .mdi {
+          color: white;
+          transition: all 0.3s linear; }
+        .content_object[sectionId="contact_me"] .contact_me_wrapper .contact_items_wrapper .contact_item.social_media:hover {
+          background-color: white; }
+          .content_object[sectionId="contact_me"] .contact_me_wrapper .contact_items_wrapper .contact_item.social_media:hover .mdi {
+            color: #222; }
   .content_object[sectionId="contact_me"] .send_message_wrapper {
     background-color: rgba(10, 10, 10, 0.7); }
     .content_object[sectionId="contact_me"] .send_message_wrapper .title {

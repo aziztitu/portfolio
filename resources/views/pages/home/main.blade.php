@@ -213,6 +213,19 @@
                 </div>
             </div>
             <div class="row">
+                <div class="contact_items_wrapper expand">
+                    <a href="https://www.linkedin.com/in/aziztitu-murugan/" target="_blank" class="contact_item social_media">
+                        <span class="mdi mdi-linkedin mdi-36px"></span>
+                    </a>
+                    <a href="https://www.facebook.com/aziz.titu.5" target="_blank"  class="contact_item social_media">
+                        <span class="mdi mdi-facebook mdi-36px"></span>
+                    </a>
+                    <a href="https://github.com/AzeeSoft" target="_blank" class="contact_item social_media">
+                        <span class="mdi mdi-github-circle mdi-36px"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
                 <div class="send_message_wrapper expand">
                     <div class="row title">
                         Leave me a message
