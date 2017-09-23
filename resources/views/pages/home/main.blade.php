@@ -276,7 +276,7 @@
     <div class="section_data valign-wrapper">
         <div class="row resume_wrapper expand">
             <div class="expand center-align">
-                <a href="{{$sectionData['resume']->section_data->resumeURL}}" class="btn waves-effect view_download">Download
+                <a href="{{$sectionData['resume']->section_data->resumeURL}}" target="_blank" class="btn waves-effect view_download">View / Download
                     Resume</a>
             </div>
         </div>

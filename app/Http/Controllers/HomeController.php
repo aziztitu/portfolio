@@ -351,7 +351,7 @@ class HomeController extends Controller
 
     public function createResumeData(){
         $resumeData = new ResumeData();
-        $resumeData->resumeURL = "/files/MyResume.docx";
+        $resumeData->resumeURL = "/files/MyResume.pdf";
 
         return $resumeData;
     }
