@@ -1,0 +1,463 @@
+@import "../components/down_arrows.scss";
+@import "../components/mousey_scroller.scss";
+
+.content_object {
+  padding: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow-y: scroll;
+
+  @media only screen and (max-width: 600px) {
+    padding: 10px;
+  }
+
+  &[sectionId="welcome"] {
+    //background-color: rgba(0,0,0,0.3);
+    .section_data {
+      //background-color: blue;
+      //border: 2px blue solid;
+
+      span.title {
+        color: #eee;
+
+        &.welcome {
+          font-family: Oxygen, serif;
+          font-size: 1.7rem;
+          letter-spacing: 5px;
+        }
+
+        &.name {
+          color: #ddd;
+          font-size: 4rem;
+          letter-spacing: 3px;
+          //font-weight: 600;
+          .nickname {
+            font-weight: 600;
+            color: #07d1e0;
+          }
+        }
+      }
+    }
+  }
+
+  &[sectionId="about_me"] {
+    //background-color: rgba(0, 27, 56,0.3);
+    .my_image_wrapper {
+      //background-color: #009199;
+      padding: 0;
+      border: 2px #009199 dashed;
+      border-radius: 1000px;
+      opacity: 0.5;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .about_me_table_wrapper {
+      //height: calc(100% - 100px);
+
+      .about_me_table {
+        color: #eee;
+        //width: auto;
+
+        td {
+          padding: 15px 20px;
+          border: 1px rgba(0, 0, 0, 0.2) solid;
+        }
+
+        td.field {
+          background-color: rgba(1, 130, 145, 0.8);
+          font-weight: 600;
+          font-size: 1.1rem;
+        }
+
+        td.value {
+          font-family: Oxygen, serif;
+          background-color: rgba(40, 40, 40, 0.6);
+        }
+      }
+    }
+
+  }
+
+  &[sectionId="skills"] {
+    //background-color: rgba(117, 119, 0, 0.1);
+    .skills_wrapper {
+      background-color: rgba(10, 10, 10, 0.4);
+      padding: 30px 10px;
+      .skill {
+        .skill_name {
+          color: white;
+          font-size: large;
+          font-weight: 600;
+        }
+
+        .skill_experience {
+          color: white;
+          font-size: small;
+          font-weight: 600;
+          padding: 10px;
+          border-radius: 3px;
+          background-color: #0c9bad;
+        }
+
+        .progress.skill_level_wrapper {
+          height: 5px;
+          background-color: rgba(80, 80, 80, 0.6);
+          .skill_level {
+            background-color: #0c9bad;
+          }
+        }
+      }
+    }
+  }
+
+  &[sectionId="projects"] {
+    //background-color: rgba(0, 76, 79, 0.3);
+    .filter_wrapper {
+      background-color: rgba(10, 10, 10, 0.6);
+      padding: 12px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+      .filter {
+        display: inline-block;
+        color: white;
+        padding: 12px;
+        margin: 5px;
+        cursor: pointer;
+        background-color: rgba(5, 5, 5, 0.8);
+        border-radius: 3px;
+        transition: all 0.2s linear;
+
+        &.active {
+          background-color: #0c9bad;
+        }
+
+        &:hover {
+          background-color: rgba(240, 240, 240, 0.9);
+          color: rgba(30, 30, 30, 0.9);
+        }
+      }
+    }
+
+    .projects_wrapper {
+      background-color: rgba(10, 10, 10, 0.6);
+      padding: 12px;
+
+      .project_item {
+        padding: 20px;
+        .project {
+          background-color: rgba(20, 20, 20, 0.7);
+          //height: 250px;
+          padding-left: 0;
+          padding-right: 0;
+          cursor: pointer;
+          transition: all 0.3s linear;
+          position: relative;
+
+          .project_image_wrapper {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 0;
+            position: relative;
+            background: rgba(10, 10, 10, 0.8);
+            background-size: 100%;
+            .project_image {
+              height: 100%;
+              width: 100%;
+              background-size: cover;
+              background-position: center;
+              transition: all 0.3s linear;
+            }
+
+            .project_types_container{
+              position: absolute;
+              top:5px;
+              padding: 0px 5px;
+              text-align: right;
+              width: 100%;
+
+              i.material-icons{
+                color: white;
+                background-color: rgba(10,10,10,0.5);
+                border-radius: 25px;
+                padding: 7px;
+                font-size: 18px;
+                transition: all 0.2s linear;
+
+                &:hover{
+                  color: #222;
+                  background-color: white;
+                }
+              }
+            }
+          }
+
+          .project_title_wrapper {
+            width: 100%;
+            padding: 10px 20px;
+            margin: 0 0 0 0;
+            //height: 20%;
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(12, 155, 173, 0.9);
+            .project_title {
+              //height: 100%;
+              //width: 100%;
+              color: #eee;
+              font-size: 1.3rem;
+              font-weight: 700;
+              //overflow: hidden;
+              //white-space: nowrap;
+              //text-overflow: clip;
+            }
+          }
+
+          .project_description_wrapper {
+            padding: 10px 20px;
+            height: 38%;
+            //overflow-y: scroll;
+            margin: 0 0 0 0;
+            .project_description {
+              color: #eee;
+              font-size: 1rem;
+            }
+          }
+
+          .more_details_wrapper {
+            padding-right: 10px;
+            padding-bottom: 10px;
+            //height: 12%;
+            .more_details {
+              border: 0px rgba(240, 240, 240, 0.9) solid;
+              border-radius: 5px;
+            }
+          }
+
+          &:hover {
+
+            transform: scale(1.03, 1.03);
+
+            .project_image_wrapper {
+              .project_image {
+                //border-radius: 100px;
+              }
+            }
+          }
+
+          &:active{
+            transform: scale(0.9, 0.9);
+          }
+        }
+
+      }
+
+      .project_infos_container{
+        display: none;
+        .project_info_wrapper{
+
+        }
+      }
+    }
+  }
+
+  &[sectionId="education"] {
+    //background-color: rgba(53, 53, 53, 0.3);
+  }
+
+  &[sectionId="contact_me"] {
+    //background-color: rgba(99, 0, 0, 0.3);
+    .contact_me_wrapper {
+
+      .contact_items_wrapper {
+        position: relative;
+        text-align: center;
+        background-color: rgba(10, 10, 10, 0.6);
+        .contact_item {
+          display: inline-block;
+          padding: 10px;
+          margin: 10px 30px 10px 30px;
+          color: white;
+        }
+      }
+    }
+
+    .send_message_wrapper {
+      background-color: rgba(10, 10, 10, 0.7);
+
+      .title {
+        color: white;
+        text-align: center;
+        width: 100%;
+        font-size: larger;
+        background-color: rgba(10, 10, 10, 0.8);
+        padding: 20px 12px;
+      }
+
+      .send_message_content {
+        padding: 12px;
+        label {
+          font-weight: 600;
+        }
+
+        .input-field {
+          color: white;
+        }
+
+        .materialize-textarea {
+          color: white;
+        }
+
+        .send_msg_btn {
+          background-color: #0c9bad;
+        }
+      }
+
+    }
+  }
+
+  &[sectionId="resume"] {
+    //background-color: rgba(0, 76, 79, 0.3);
+
+    .section_data {
+      padding-bottom: 0px;
+
+      .resume_wrapper {
+        //background-color: rgba(10, 10, 10, 0.6);
+        //padding: 100px;
+
+        .view_download {
+          padding: 12px 18px;
+          height: auto;
+          background-color: rgba(10, 10, 10, 0.1);
+          color: white;
+          font-weight: 600;
+          border: solid 1px white;
+          //background-color: #0c9bad;
+
+          transition: all 0.25s linear;
+
+          &:hover {
+            background-color: white;
+            color: #111;
+          }
+        }
+      }
+
+      .footer {
+        bottom: 0px;
+        .info {
+          .designed_by {
+            color: white;
+            font-size: medium;
+          }
+        }
+      }
+    }
+  }
+
+  .section_data {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    padding-bottom: 100px;
+
+    .subtitle_wrapper {
+      text-align: center;
+      margin-bottom: 50px;
+      .subtitle {
+        color: #eee;
+        font-size: 2.5rem;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-bottom: 2px rgba(240, 240, 240, 0.4) solid;
+      }
+    }
+
+    .more_details_wrapper {
+      padding-top: 20px;
+
+      .more_details {
+        color: rgba(240, 240, 240, 0.9);
+        background-color: rgba(30, 30, 30, 0.9);
+        font-weight: 700;
+        padding: 10px;
+        border: 1px rgba(240, 240, 240, 0.9) solid;
+        cursor: pointer;
+        transition: all 0.25s ease-out;
+
+        &:hover {
+          background-color: rgba(240, 240, 240, 0.9);
+          color: rgba(30, 30, 30, 0.9);
+        }
+      }
+    }
+
+    .footer {
+      position: absolute;
+      left: 0;
+      bottom: 75px;
+      width: 100%;
+
+      @include down_arrows;
+      @include mousey_scroller;
+
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-track {
+  width: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  width: 10px;
+  border-radius: 0px;
+  background-color: rgba(1, 130, 145, 0.8);
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.8);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #000;
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+/*
+
+@-moz-document url-prefix(http://),url-prefix(https://) {
+    scrollbar {
+        -moz-appearance: none ;
+        background: rgb(0,255,0) ;
+    }
+    thumb,scrollbarbutton {
+        -moz-appearance: none ;
+        background-color: rgb(0,0,255) ;
+    }
+
+    thumb:hover,scrollbarbutton:hover {
+        -moz-appearance: none;
+        background-color: rgb(255,0,0) ;
+    }
+
+    scrollbarbutton {
+        display: none;
+    }
+
+    scrollbar[orient="vertical"] {
+        min-width: 15px ;
+    }
+}*/

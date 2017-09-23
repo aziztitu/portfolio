@@ -1,0 +1,20 @@
+body {
+  padding: 0;
+  margin: 0;
+
+  background-color: #333;
+  font-family: Quicksand, serif;
+  overflow: hidden;
+
+  .expand{
+    width: 100%;
+  }
+
+  .expand_vertical{
+    height: 100%;
+  }
+
+  &.materialize .material-tooltip{
+    min-height: auto;
+  }
+}
