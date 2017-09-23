@@ -201,19 +201,6 @@
         <div class="contact_me_wrapper">
             <div class="row">
                 <div class="contact_items_wrapper expand">
-                    <div class="contact_item">
-                        <span><i class="material-icons left">phone</i>{{$sectionData['contact_me']->section_data->phone}}</span>
-                    </div>
-                    <div class="contact_item">
-                        <span><i class="material-icons left">email</i>{{$sectionData['contact_me']->section_data->email}}</span>
-                    </div>
-                    <div class="contact_item">
-                        <span><i class="material-icons left">location_on</i>{{$sectionData['contact_me']->section_data->address}}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="contact_items_wrapper expand">
                     <a href="https://www.linkedin.com/in/aziztitu-murugan/" target="_blank" class="contact_item social_media">
                         <span class="mdi mdi-linkedin mdi-36px"></span>
                     </a>
@@ -225,6 +212,20 @@
                     </a>
                 </div>
             </div>
+            <div class="row">
+                <div class="contact_items_wrapper expand">
+                    <div class="contact_item">
+                        <span><i class="material-icons left">phone</i>{{$sectionData['contact_me']->section_data->phone}}</span>
+                    </div>
+                    <div class="contact_item">
+                        <span><i class="material-icons left">email</i>{{$sectionData['contact_me']->section_data->email}}</span>
+                    </div>
+                    <div class="contact_item">
+                        <span><i class="material-icons left">location_on</i>{{$sectionData['contact_me']->section_data->address}}</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="send_message_wrapper expand">
                     <div class="row title">
