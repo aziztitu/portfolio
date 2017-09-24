@@ -32,7 +32,7 @@ function prepareSwipeListener() {
     hammer.on("swipe", function (e) {
         console.log("Swiped!");
         console.log(e);
-        moveSection(e.angle);
+        // moveSection(e.angle);
     });
 
     var contentObjects = $(".content_object");
