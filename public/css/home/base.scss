@@ -102,6 +102,7 @@ ul.side-nav#nav-mobile {
             li {
               padding: 5px 0;
               cursor: pointer;
+              white-space: nowrap;
 
               &:hover {
                 a {

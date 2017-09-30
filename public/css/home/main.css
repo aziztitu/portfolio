@@ -297,12 +297,13 @@
           animation-iteration-count: infinite; }
 @keyframes scroll {
   0% {
+    transform: translateY(-10px);
     opacity: 0; }
-  10% {
-    transform: translateY(15px);
-    opacity: 0; }
-  100% {
+  30% {
     transform: translateY(0px);
+    opacity: 0.5; }
+  100% {
+    transform: translateY(10px);
     opacity: 1; } }
 ::-webkit-scrollbar {
   width: 10px;

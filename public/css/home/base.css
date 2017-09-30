@@ -62,7 +62,8 @@ ul.side-nav#nav-mobile li.section_tab a.section_item {
             opacity: 0.9; }
         .root_cover.row .foreground_layer .col.pane.sections ul.section_list li {
           padding: 5px 0;
-          cursor: pointer; }
+          cursor: pointer;
+          white-space: nowrap; }
           .root_cover.row .foreground_layer .col.pane.sections ul.section_list li:hover a {
             padding-left: 15px;
             font-weight: 700; }

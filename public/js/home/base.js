@@ -27,13 +27,13 @@ $(document).ready(function () {
 
 function prepareSwipeListener() {
     var foregroundLayer = $(".foreground_layer");
-    var hammer = new Hammer(foregroundLayer[0]);
+    /*var hammer = new Hammer(foregroundLayer[0]);
     hammer.get('swipe').set({direction: Hammer.DIRECTION_VERTICAL});
     hammer.on("swipe", function (e) {
         console.log("Swiped!");
         console.log(e);
         // moveSection(e.angle);
-    });
+    });*/
 
     var contentObjects = $(".content_object");
     contentObjects.each(function () {
@@ -88,14 +88,19 @@ function prepareSwipeListener() {
 
 function prepareMouseWheelListener() {
     var foregroundLayer = $(".foreground_layer");
-    foregroundLayer.bind('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
+    foregroundLayer.bind('mousewheel wheel', function (e) {
 
         if (!AZ.listenForMouseWheel) {
             e.preventDefault();
             return;
         }
 
-        var direction = e.originalEvent.wheelDelta / 120;
+        var direction/* = e.originalEvent.wheelDelta / 120*/;
+        direction = e.originalEvent.deltaY * -1;
+
+        // console.log("Delta Y: "+e.originalEvent.deltaY);
+        // console.log("Dir: "+direction);
+        // console.log(e.originalEvent);
 
         var sectionTabs = $("li.section_tab.mobile");
         var activeSectionId = null;
@@ -127,6 +132,7 @@ function prepareMouseWheelListener() {
         if (curTime - AZ.lastScrollTime < defaultScrollTimeout + 500) {
             return;
         }
+        AZ.lastClientY = e.clientY;
 
         e.preventDefault();
 
@@ -136,6 +142,7 @@ function prepareMouseWheelListener() {
 }
 
 function moveSection(direction) {
+    AZ.lastClientY = -1;
     var sectionTabs = $("li.section_tab.mobile");
     var prevSectionId = null;
     var activeSectionId = null;
