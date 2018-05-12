@@ -7,7 +7,7 @@
  */
 @endphp
 
-<div class="mousey">
+<div class="mousey" onclick="moveSection(-1)">
     <div class="scroller">
 
     </div>

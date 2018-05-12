@@ -19,6 +19,8 @@
       .content_object[sectionId="welcome"] .section_data span.title.name .nickname {
         font-weight: 600;
         color: #07d1e0; }
+    .content_object[sectionId="welcome"] .section_data span.title .typed-cursor {
+      opacity: 0; }
   .content_object[sectionId="about_me"] .my_image_wrapper {
     padding: 0;
     border: 2px #009199 dashed;
@@ -34,7 +36,8 @@
     .content_object[sectionId="about_me"] .about_me_table_wrapper .about_me_table td.field {
       background-color: rgba(1, 130, 145, 0.8);
       font-weight: 600;
-      font-size: 1.1rem; }
+      font-size: 1.1rem;
+      width: 30%; }
     .content_object[sectionId="about_me"] .about_me_table_wrapper .about_me_table td.value {
       font-family: Oxygen, serif;
       background-color: rgba(40, 40, 40, 0.6); }
@@ -44,19 +47,22 @@
     .content_object[sectionId="skills"] .skills_wrapper .skill .skill_name {
       color: white;
       font-size: large;
-      font-weight: 600; }
+      font-weight: 600;
+      transition: all 1.25s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .content_object[sectionId="skills"] .skills_wrapper .skill .skill_experience {
       color: white;
       font-size: small;
       font-weight: 600;
       padding: 10px;
       border-radius: 3px;
-      background-color: #0c9bad; }
+      background-color: #0c9bad;
+      transition: all 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .content_object[sectionId="skills"] .skills_wrapper .skill .progress.skill_level_wrapper {
       height: 5px;
       background-color: rgba(80, 80, 80, 0.6); }
       .content_object[sectionId="skills"] .skills_wrapper .skill .progress.skill_level_wrapper .skill_level {
-        background-color: #0c9bad; }
+        background-color: #0c9bad;
+        transition: all 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
   .content_object[sectionId="projects"] .filter_wrapper {
     background-color: rgba(10, 10, 10, 0.6);
     padding: 12px;
@@ -82,7 +88,8 @@
     background-color: rgba(10, 10, 10, 0.6);
     padding: 12px; }
     .content_object[sectionId="projects"] .projects_wrapper .project_item {
-      padding: 20px; }
+      padding: 20px;
+      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
       .content_object[sectionId="projects"] .projects_wrapper .project_item .project {
         background-color: rgba(20, 20, 20, 0.7);
         padding-left: 0;
@@ -183,7 +190,8 @@
       .content_object[sectionId="contact_me"] .send_message_wrapper .send_message_content label {
         font-weight: 600; }
       .content_object[sectionId="contact_me"] .send_message_wrapper .send_message_content .input-field {
-        color: white; }
+        color: white;
+        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
       .content_object[sectionId="contact_me"] .send_message_wrapper .send_message_content .materialize-textarea {
         color: white; }
       .content_object[sectionId="contact_me"] .send_message_wrapper .send_message_content .send_msg_btn {
@@ -206,6 +214,8 @@
       .content_object[sectionId="resume"] .section_data .footer .info .designed_by {
         color: white;
         font-size: medium; }
+      .content_object[sectionId="resume"] .section_data .footer .typed-cursor {
+        opacity: 0; }
   .content_object .section_data {
     position: relative;
     width: 100%;

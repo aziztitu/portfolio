@@ -38,3 +38,17 @@ function setClickToRemoveToast() {
 function refreshTooltips(){
     $('.tooltipped').tooltip({delay: 50});
 }
+
+function typeDynamically(selector, typeSpeed = 50, startDelay = 0, onComplete = function(){}) {
+    let jQueryObj = $(selector);
+    let htmlContent = jQueryObj.html();
+    jQueryObj.html('');
+
+    let typed = new Typed(selector, {
+        strings: [htmlContent],
+        loop: false,
+        typeSpeed: typeSpeed,
+        startDelay: startDelay,
+        onComplete: onComplete
+    });
+}

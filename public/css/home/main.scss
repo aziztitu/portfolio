@@ -35,6 +35,10 @@
             color: #07d1e0;
           }
         }
+
+        .typed-cursor {
+          opacity: 0;
+        }
       }
     }
   }
@@ -69,6 +73,7 @@
           background-color: rgba(1, 130, 145, 0.8);
           font-weight: 600;
           font-size: 1.1rem;
+          width: 30%;
         }
 
         td.value {
@@ -90,6 +95,7 @@
           color: white;
           font-size: large;
           font-weight: 600;
+          transition: all 1.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .skill_experience {
@@ -99,6 +105,7 @@
           padding: 10px;
           border-radius: 3px;
           background-color: #0c9bad;
+          transition: all 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .progress.skill_level_wrapper {
@@ -106,6 +113,7 @@
           background-color: rgba(80, 80, 80, 0.6);
           .skill_level {
             background-color: #0c9bad;
+            transition: all 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           }
         }
       }
@@ -148,6 +156,8 @@
 
       .project_item {
         padding: 20px;
+        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
         .project {
           background-color: rgba(20, 20, 20, 0.7);
           //height: 250px;
@@ -315,12 +325,14 @@
 
       .send_message_content {
         padding: 12px;
+
         label {
           font-weight: 600;
         }
 
         .input-field {
           color: white;
+          transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .materialize-textarea {
@@ -370,6 +382,10 @@
             color: white;
             font-size: medium;
           }
+        }
+
+        .typed-cursor {
+          opacity: 0;
         }
       }
     }

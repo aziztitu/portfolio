@@ -4,6 +4,7 @@
 
 AZ.listenForMouseWheel = true;
 AZ.lastScrollTime = 0;
+AZ.onSectionActivated = null;
 
 const defaultScrollTimeout = 1000;
 
@@ -207,6 +208,12 @@ function activateSection(sectionId) {
             }
         });
         AZ.listenForMouseWheel = false;
+
+        if (AZ.onSectionActivated) {
+            setTimeout(function () {
+                AZ.onSectionActivated(sectionId);
+            }, 300);
+        }
     }
 
     var backgroundObject = $(".background_object[sectionId='" + sectionId + "']");

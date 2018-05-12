@@ -15,6 +15,8 @@
 
 @section('head')
     @parent
+    <script type="text/javascript" src="/js/common/typed.min.js"></script>
+    <script type="text/javascript" src="/js/common/particles.min.js"></script>
     <script type="text/javascript" src="/js/home/hammer.min.js"></script>
     <script type="text/javascript" src="/js/home/main.js"></script>
     <link rel="stylesheet" href="/css/home/main.css">
@@ -53,7 +55,7 @@
                     @foreach($sectionData['about_me']->section_data as $fieldValuePairs)
                         <tr>
                             <td class="field right-align">{{$fieldValuePairs->field}}</td>
-                            <td class="value">{{$fieldValuePairs->value}}</td>
+                            <td class="value"><span class="content" id="aboutMeTypeData_{{$loop->index}}">{{$fieldValuePairs->value}}</span></td>
                         </tr>
                     @endforeach
                 </table>
@@ -101,7 +103,7 @@
                             <div class="row">
                                 <div class="col s12">
                                     <div class="progress skill_level_wrapper">
-                                        <div class="determinate skill_level" style="width: {{$skill->level}}%"></div>
+                                        <div class="determinate skill_level" style="width: {{$skill->level}}%" skill-level="{{$skill->level}}%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -282,7 +284,7 @@
         </div>
         <div class="footer center-align">
             <div class="info">
-                <span class="designed_by">Designed by Azee</span>
+                <span id="designed_by" class="designed_by">Designed by Azee</span>
             </div>
         </div>
     </div>

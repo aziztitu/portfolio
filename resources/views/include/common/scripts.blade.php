@@ -17,7 +17,7 @@
 <!--suppress JSUnresolvedVariable -->
 <script>
 
-    //For loading resources asynchronously
+    /*//For loading resources asynchronously
     //TODO: Remove the timeout!!
     console.warn("During prod, scripts.blade.php: Remove Timeout. Setup logic for caching async resources");
 
@@ -59,5 +59,5 @@
                 onSourceLoaded(obj);
             }
         });
-    };
+    };*/
 </script>

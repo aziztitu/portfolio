@@ -35,6 +35,40 @@ $(document).ready(function () {
     redrawProjects();
     redrawSkills();
     refreshTooltips();
+
+    initSections();
+
+    AZ.onSectionActivated = function (sectionId) {
+        let sectionContentObj = $('.content_object[sectionId=' + sectionId + ']');
+        if (sectionContentObj.attr('animated') == "true") {
+            return;
+        }
+
+        switch (sectionId) {
+            case 'welcome':
+                onWelcomeActivated();
+                break;
+            case 'about_me':
+                onAboutMeActivated();
+                break;
+            case 'skills':
+                onSkillsActivated();
+                break;
+            case 'projects':
+                onProjectsActivated();
+                break;
+            case 'contact_me':
+                onContactMeActivated();
+                break;
+            case 'resume':
+                onResumeActivated();
+                break;
+        }
+
+        sectionContentObj.attr('animated', "true");
+    };
+
+    AZ.onSectionActivated('welcome');
 });
 
 function onPageResized() {
@@ -43,6 +77,122 @@ function onPageResized() {
     moveSection(0);
     redrawProjects();
 }
+
+
+function initSections() {
+    let welcomeBackgroundObject = $('.background_object[sectionId=welcome]');
+    welcomeBackgroundObject.attr('id', 'welcome-particle-bg');
+    welcomeBackgroundObject.css('background-image', '');
+    welcomeBackgroundObject.css('background', 'radial-gradient(#00092d, #020616)');
+
+    particlesJS.load('welcome-particle-bg', 'json/particlesjs-welcome-config.json', function() {
+        console.log('callback - particles.js config loaded');
+    });
+
+    $('.title.welcome').css('visibility', 'hidden');
+    $('.title.name').css('visibility', 'hidden');
+
+    $('.about_me_table').find('td.value').find('span.content').css('visibility', 'hidden');
+
+    $('.skills_wrapper').find('.skill').each(function () {
+        let nameObj = $(this).find('.skill_name');
+        let experienceObj = $(this).find('.skill_experience');
+        let levelObj = $(this).find('.skill_level');
+
+        nameObj.css('opacity', 0);
+        experienceObj.css('opacity', 0);
+        levelObj.css('opacity', 0);
+        levelObj.css('width', 0);
+    });
+
+    $('.projects_wrapper').find('.project_item').each(function() {
+       $(this).css('opacity', 0);
+       $(this).css('transform', 'translate(-50px, 0px)');
+    });
+
+    $('.send_message_content').find('.input-field').each(function () {
+        $(this).css('opacity', 0);
+        $(this).css('transform', 'translate(0px, -50px)');
+    });
+
+    $('#designed_by').css('visibility', 'hidden');
+}
+
+function onWelcomeActivated() {
+    $('.title.welcome').css('visibility', 'visible');
+    typeDynamically('.title.welcome', 35, 0, function () {
+        $('.title.name').css('visibility', 'visible');
+        typeDynamically('.title.name', 45);
+    });
+}
+
+function onAboutMeActivated() {
+    let aboutMeTypedContents = $('.about_me_table').find('td.value').find('span.content');
+    aboutMeTypedContents.css('visibility', 'visible');
+
+    aboutMeTypedContents.each(function () {
+        let contentObject = $(this);
+        typeDynamically('#' + contentObject.attr('id'), 40, 0, function () {
+            contentObject.parent().find('.typed-cursor').fadeOut(1500);
+        });
+    });
+}
+
+function onSkillsActivated() {
+    let delay = 0;
+    $('.skills_wrapper').find('.skill').each(function () {
+        let nameObj = $(this).find('.skill_name');
+        let experienceObj = $(this).find('.skill_experience');
+        let levelObj = $(this).find('.skill_level');
+
+        let duration = 100;
+        setTimeout(function() {
+            nameObj.css("opacity", 1);
+            experienceObj.css("opacity", 1);
+            levelObj.css("opacity", 1);
+            levelObj.css('width', levelObj.attr('skill-level'));
+        }, delay);
+        delay += duration;
+
+    });
+}
+
+function onProjectsActivated() {
+    let delay = 0;
+    $('.projects_wrapper').find('.project_item').each(function() {
+        let projectObj = $(this);
+
+        let duration = 200;
+        setTimeout(function() {
+            projectObj.css('opacity', 1);
+            projectObj.css('transform', 'translate(0, 0)');
+        }, delay);
+        delay += duration;
+    });
+}
+
+function onContactMeActivated() {
+    let delay = 100;
+    $('.send_message_content').find('.input-field').each(function () {
+        let inputFieldObj = $(this);
+
+        let duration = 200;
+        setTimeout(function() {
+            inputFieldObj.css('opacity', 1);
+            inputFieldObj.css('transform', 'translate(0, 0)');
+        }, delay);
+        delay += duration;
+    });
+}
+
+function onResumeActivated() {
+
+    setTimeout(function () {
+        $('#designed_by').css('visibility', 'visible');
+        typeDynamically('#designed_by', 45);
+    }, 300);
+}
+
 
 function redrawProjects() {
     var maxHeight = 0;
