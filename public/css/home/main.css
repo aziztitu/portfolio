@@ -19,8 +19,8 @@
       .content_object[sectionId="welcome"] .section_data span.title.name .nickname {
         font-weight: 600;
         color: #07d1e0; }
-    .content_object[sectionId="welcome"] .section_data span.title .typed-cursor {
-      opacity: 0; }
+  .content_object[sectionId="welcome"] .section_data .typed-cursor {
+    opacity: 0; }
   .content_object[sectionId="about_me"] .my_image_wrapper {
     padding: 0;
     border: 2px #009199 dashed;
