@@ -220,9 +220,9 @@
                     <div class="contact_item">
                         <span><i class="material-icons left">email</i>{{$sectionData['contact_me']->section_data->email}}</span>
                     </div>
-                    <div class="contact_item">
+                    {{--<div class="contact_item">
                         <span><i class="material-icons left">location_on</i>{{$sectionData['contact_me']->section_data->address}}</span>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
 
