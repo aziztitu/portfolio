@@ -90,6 +90,17 @@
     .skills_wrapper {
       background-color: rgba(10, 10, 10, 0.4);
       padding: 30px 10px;
+
+      .skillset-name-wrapper {
+        margin-left: 14px;
+        margin-bottom: 36px;
+        .skillset-name {
+          color: white;
+          font-size: x-large;
+          font-weight: 600;
+        }
+      }
+
       .skill {
         .skill_name {
           color: white;
@@ -270,6 +281,16 @@
 
         }
       }
+    }
+  }
+
+  #project-viewer-modal {
+    background-color: #222;
+    color: white;
+
+    .modal-footer {
+      background-color: #222;
+      color: white;
     }
   }
 

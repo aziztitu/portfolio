@@ -81,10 +81,16 @@
             </div>
         </div>
         {{--<div class="divider"></div>--}}
-        <div class="skills_wrapper valign-wrapper">
-            <div class="row expand">
-                @foreach($sectionData['skills']->section_data as $skill)
-                    <div class="skill col s12 m12 l6">
+        @foreach($sectionData['skills']->section_data as $skillSet)
+            <div class="skills_wrapper valign-wrapper">
+                <div class="row expand">
+                    <div class="col s12 skillset-name-wrapper">
+                        <span class="skillset-name">
+                            {{$skillSet->name}}
+                        </span>
+                    </div>
+                    @foreach($skillSet->skills as $skill)
+                        <div class="skill col s12 m12 l6">
                         <div class="row">
                             <div class="row">
                                 <div class="col s8">
@@ -109,9 +115,10 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endforeach
         <div class="footer center-align">
             @component('components.mouseyscroller')
             @endcomponent
@@ -142,7 +149,7 @@
                 <div class="row">
                     @foreach($sectionData['projects']->section_data[0]->projects as $project)
                         <div class="project_item col s12 m6 l4 @foreach($project->types as $projectType)type_{{$projectType->type}} @endforeach"
-                             projectid="{{$project->id}}">
+                             projectid="{{$project->id}}" onclick="showProjectInfo('{{$project->id}}')">
                             <div class="project">
                                 <div class="project_image_wrapper row center-align">
                                     <div class="project_image" style="background-image: url('{{$project->img_path}}')">
@@ -177,9 +184,23 @@
             <div class="project_infos_container">
                 @foreach($sectionData['projects']->section_data[0]->projects as $project)
                     <div class="project_info_wrapper" projectid="{{$project->id}}">
-                        @include('include.projectinfos.'.$project->info_blade_name)
+                        <h4>{{$project->title}}</h4>
+                        @if(View::exists('include.project_infos.'.$project->id))
+                            @include('include.project_infos.'.$project->id)
+                        @else
+                            @include('include.project_infos.dummy')
+                        @endif
                     </div>
                 @endforeach
+            </div>
+
+            <div id="project-viewer-modal" class="modal">
+                <div class="modal-content">
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat red-text">Close</a>
+                </div>
             </div>
 
         </div>
@@ -288,4 +309,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section("project_infos")
+    @foreach($sectionData['projects']->section_data[0]->projects as $project)
+
+    @endforeach
 @endsection

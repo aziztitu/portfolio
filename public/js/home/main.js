@@ -5,6 +5,8 @@
 var lastResizeCount = 0;
 var refreshers = [];
 
+var projectViewerModal;
+
 $(document).ready(function () {
     // refreshCarousel();
     $(window).resize(function () {
@@ -30,6 +32,24 @@ $(document).ready(function () {
         refresher.waitAndRefresh(lastResizeCount);
         refreshers.push(refresher);
 
+    });
+
+    projectViewerModal = $('#project-viewer-modal');
+    projectViewerModal.modal({
+        dismissible: true,
+        opacity: .5,
+        // inDuration: 300,
+        // outDuration: 600,
+        ready: function () {
+            // blurBG();
+            // if (openCallback)
+            //     openCallback();
+        },
+        complete: function () {
+            // unblurBG();
+            // if (closeCallback)
+            //     closeCallback();
+        }
     });
 
     redrawProjects();
@@ -85,7 +105,7 @@ function initSections() {
     welcomeBackgroundObject.css('background-image', '');
     welcomeBackgroundObject.css('background', 'radial-gradient(#00092d, #020616)');
 
-    particlesJS.load('welcome-particle-bg', 'json/particlesjs-welcome-config.json', function() {
+    particlesJS.load('welcome-particle-bg', 'json/particlesjs-welcome-config.json', function () {
         console.log('callback - particles.js config loaded');
     });
 
@@ -105,9 +125,9 @@ function initSections() {
         levelObj.css('width', 0);
     });
 
-    $('.projects_wrapper').find('.project_item').each(function() {
-       $(this).css('opacity', 0);
-       $(this).css('transform', 'translate(-50px, 0px)');
+    $('.projects_wrapper').find('.project_item').each(function () {
+        $(this).css('opacity', 0);
+        $(this).css('transform', 'translate(-50px, 0px)');
     });
 
     $('.send_message_content').find('.input-field').each(function () {
@@ -146,7 +166,7 @@ function onSkillsActivated() {
         let levelObj = $(this).find('.skill_level');
 
         let duration = 100;
-        setTimeout(function() {
+        setTimeout(function () {
             nameObj.css("opacity", 1);
             experienceObj.css("opacity", 1);
             levelObj.css("opacity", 1);
@@ -159,11 +179,11 @@ function onSkillsActivated() {
 
 function onProjectsActivated() {
     let delay = 0;
-    $('.projects_wrapper').find('.project_item').each(function() {
+    $('.projects_wrapper').find('.project_item').each(function () {
         let projectObj = $(this);
 
         let duration = 200;
-        setTimeout(function() {
+        setTimeout(function () {
             projectObj.css('opacity', 1);
             projectObj.css('transform', 'translate(0, 0)');
         }, delay);
@@ -177,7 +197,7 @@ function onContactMeActivated() {
         let inputFieldObj = $(this);
 
         let duration = 200;
-        setTimeout(function() {
+        setTimeout(function () {
             inputFieldObj.css('opacity', 1);
             inputFieldObj.css('transform', 'translate(0, 0)');
         }, delay);
@@ -251,6 +271,18 @@ function filterProjects(projectType) {
         });
     }
 }
+
+function showProjectInfo(projectId) {
+    let projectInfoWrapper = $('.project_info_wrapper[projectid=' + projectId + ']');
+
+    let clonedProjectInfo = projectInfoWrapper.clone();
+
+    projectViewerModal.find('.modal-content').empty();
+    projectViewerModal.find('.modal-content').append(clonedProjectInfo);
+
+    projectViewerModal.modal('open');
+}
+
 
 function sendMessage() {
 

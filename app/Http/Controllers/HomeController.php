@@ -36,6 +36,21 @@ class FieldValuePair
     }
 }
 
+class SkillSet
+{
+    public $name;
+    public $skills = array();
+
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+
+    public function addSkill($skill)
+    {
+        array_push($this->skills, $skill);
+    }
+}
 
 class SkillData
 {
@@ -86,7 +101,8 @@ class ProjectType
     public $name;
     public $icon;
 
-    public static function getProjectTypes(){
+    public static function getProjectTypes()
+    {
         $projectTypes = array();
 
         $projectTypes[ProjectType::$web] = new ProjectType(ProjectType::$web, "Web", "language");
@@ -98,9 +114,10 @@ class ProjectType
         return $projectTypes;
     }
 
-    public function __construct($type, $name, $icon){
+    public function __construct($type, $name, $icon)
+    {
         $this->type = $type;
-        $this->name= $name;
+        $this->name = $name;
         $this->icon = $icon;
     }
 
@@ -109,23 +126,17 @@ class ProjectType
 class ProjectData
 {
     public $id;
-    public $img_path="/images/projects/default.png";
+    public $img_path = "/images/projects/default.png";
     public $title;
     public $description = "";
-    public $info_blade_name = "";
     public $types = array();
 
     public function __construct($id, $img_path, $title)
     {
         $this->id = $id;
-        if($img_path!="")
+        if ($img_path != "")
             $this->img_path = $img_path;
         $this->title = $title;
-        $this->info_blade_name = "dummy";
-    }
-
-    public function setInfoBladeName($info_blade_name){
-        $this->info_blade_name = $info_blade_name;
     }
 
     public function addType($type)
@@ -141,7 +152,8 @@ class ContactMeData
     public $address;
 }
 
-class ResumeData{
+class ResumeData
+{
     public $resumeURL;
 }
 
@@ -195,13 +207,13 @@ class HomeController extends Controller
         $fullName = new FieldValuePair("Full Name", "Aziztitu Murugan");
         $preferredName = new FieldValuePair("Preferred Name", "Azee");
         $dob = new FieldValuePair("Date of Birth", "June 28 1996");
-        $currentRoles = new FieldValuePair("Current Roles", "Software Developer & Student");
-        $collegeYear = new FieldValuePair("College Year", "Sophomore");
+        $currentRoles = new FieldValuePair("Current Roles", "Student / Software Developer");
+        $collegeYear = new FieldValuePair("College Year", "Junior");
         $major = new FieldValuePair("Major", "Computer Science");
         $university = new FieldValuePair("University", "Southern Arkansas University");
         $phone = new FieldValuePair("Phone", "(501) 504 4820");
         $email = new FieldValuePair("Email", "aziztitu1996@gmail.com");
-//        $lookingFor = new FieldValuePair("Looking for", "Internship in  Software Development");
+        $lookingFor = new FieldValuePair("Looking for", "Software Engineering Internship");
 
         return [
             $fullName,
@@ -212,44 +224,48 @@ class HomeController extends Controller
             $major,
             $university,
             $phone,
-            $email
-//            $lookingFor
+            $email,
+            $lookingFor
         ];
     }
 
     private function createSkillsData()
     {
-        $skillSet = array();
+        $skillSets = array();
 
-        array_push($skillSet, new SkillData("Android Development", 4, 80));
-        array_push($skillSet, new SkillData("Web Development", 4, 90));
-        array_push($skillSet, new SkillData("Windows Development", 6, 85));
-        array_push($skillSet, new SkillData("Game Development", 3, 65));
-        array_push($skillSet, new SkillData("Internet of Things", 2, 60));
-        array_push($skillSet, new SkillData("Unity3D", 2, 60));
-        array_push($skillSet, new SkillData("Java", 5, 85));
-        array_push($skillSet, new SkillData("PHP", 5, 85));
-        array_push($skillSet, new SkillData("C#", 3, 70));
-        array_push($skillSet, new SkillData("C++", 3, 70));
-        array_push($skillSet, new SkillData("Python", 3, 65));
-        array_push($skillSet, new SkillData("MySQL", 5, 80));
-        array_push($skillSet, new SkillData("HTML", 6, 95));
-        array_push($skillSet, new SkillData("CSS", 6, 90));
-        array_push($skillSet, new SkillData("JavaScript", 5, 85));
-        array_push($skillSet, new SkillData("jQuery", 5, 85));
-        array_push($skillSet, new SkillData("React JS", 2, 70));
-        array_push($skillSet, new SkillData("Laravel", 2, 70));
-        array_push($skillSet, new SkillData("Windows Presentation Framework (WPF)", 2, 50));
-        array_push($skillSet, new SkillData("JSP", 2, 60));
-        array_push($skillSet, new SkillData("Django", 1, 55));
-        array_push($skillSet, new SkillData("Git", 4, 85));
-        array_push($skillSet, new SkillData("Processing", 2, 75));
-        array_push($skillSet, new SkillData("Arduino", 2, 75));
-        array_push($skillSet, new SkillData("Data Structures", 4, 85));
-        array_push($skillSet, new SkillData("Algorithms", 4, 85));
-        array_push($skillSet, new SkillData("Networking", 4, 65));
+        $programmingSkillSet = new SkillSet("Programming Languages");
+        $programmingSkillSet->addSkill(new SkillData("Java", 6, 85));
+        $programmingSkillSet->addSkill(new SkillData("PHP", 6, 85));
+        $programmingSkillSet->addSkill(new SkillData("JavaScript", 6, 85));
+        $programmingSkillSet->addSkill(new SkillData("C#", 4, 75));
+        $programmingSkillSet->addSkill(new SkillData("C++", 4, 70));
+        $programmingSkillSet->addSkill(new SkillData("Python", 4, 70));
+        $programmingSkillSet->addSkill(new SkillData("MySQL", 6, 80));
+        $programmingSkillSet->addSkill(new SkillData("HTML", 7, 95));
+        $programmingSkillSet->addSkill(new SkillData("CSS", 7, 90));
 
-        return $skillSet;
+        $platformsSkillSet = new SkillSet("Platforms/Libraries");
+        $platformsSkillSet->addSkill(new SkillData("Web Development", 5, 90));
+        $platformsSkillSet->addSkill(new SkillData("Android Development", 5, 80));
+        $platformsSkillSet->addSkill(new SkillData("Windows Development", 7, 85));
+        $platformsSkillSet->addSkill(new SkillData("Game Development", 4, 80));
+        $platformsSkillSet->addSkill(new SkillData("Internet of Things", 2, 65));
+        $platformsSkillSet->addSkill(new SkillData("Unity3D", 3, 80));
+        $platformsSkillSet->addSkill(new SkillData("jQuery", 6, 85));
+        $platformsSkillSet->addSkill(new SkillData("React JS", 2, 70));
+        $platformsSkillSet->addSkill(new SkillData("TypeScript", 2, 85));
+        $platformsSkillSet->addSkill(new SkillData("Laravel", 3, 75));
+        $platformsSkillSet->addSkill(new SkillData("Windows Presentation Framework (WPF)", 3, 60));
+        $platformsSkillSet->addSkill(new SkillData("JSP", 2, 60));
+        $platformsSkillSet->addSkill(new SkillData("Django", 1, 55));
+        $platformsSkillSet->addSkill(new SkillData("Git", 5, 90));
+        $platformsSkillSet->addSkill(new SkillData("Processing", 2, 75));
+        $platformsSkillSet->addSkill(new SkillData("Arduino", 2, 75));
+
+        array_push($skillSets, $programmingSkillSet);
+        array_push($skillSets, $platformsSkillSet);
+
+        return $skillSets;
     }
 
     private function createProjectsData()
@@ -264,7 +280,6 @@ class HomeController extends Controller
         $seamlessTimecard->addType($projectTypes[ProjectType::$web]);
         $seamlessTimecard->addType($projectTypes[ProjectType::$mobile]);
         $seamlessTimecard->addType($projectTypes[ProjectType::$desktop]);
-        $seamlessTimecard->setInfoBladeName("seamlesstimecard");
 
         $seamlessPos = new ProjectData("seamless_pos", "/images/projects/seamless_pos.jpg", "Seamless POS");
         $seamlessPos->addType($projectTypes[ProjectType::$web]);
@@ -300,7 +315,7 @@ class HomeController extends Controller
         $ddnsUpdater->addType($projectTypes[ProjectType::$web]);
 
         $azids = new ProjectData("azids", "/images/projects/azids.jpg", "AZ Intrusion Detection System (Demo)");
-        $azids ->addType($projectTypes[ProjectType::$desktop]);
+        $azids->addType($projectTypes[ProjectType::$desktop]);
 
 
         $seamlessVNC = new ProjectData("seamless_vnc", "/images/projects/seamless_vnc.jpg", "Seamless VNC");
@@ -314,9 +329,8 @@ class HomeController extends Controller
         $sauCricketGame->addType($projectTypes[ProjectType::$game]);
 
         $repulse = new ProjectData("repulse", "/images/projects/repulse.jpg", "Repulse");
-        $repulse ->addType($projectTypes[ProjectType::$desktop]);
-        $repulse ->addType($projectTypes[ProjectType::$game]);
-
+        $repulse->addType($projectTypes[ProjectType::$desktop]);
+        $repulse->addType($projectTypes[ProjectType::$game]);
 
 
         $projectCollection1->addProject($seamlessTimecard);
@@ -340,7 +354,8 @@ class HomeController extends Controller
         ];
     }
 
-    private function createContactMeData(){
+    private function createContactMeData()
+    {
         $contactMeData = new ContactMeData();
         $contactMeData->phone = "(501) 504 4820";
         $contactMeData->email = "aziztitu1996@gmail.com";
@@ -349,7 +364,8 @@ class HomeController extends Controller
         return $contactMeData;
     }
 
-    public function createResumeData(){
+    public function createResumeData()
+    {
         $resumeData = new ResumeData();
         $resumeData->resumeURL = "/files/MyResume.pdf";
 
