@@ -89,4 +89,7 @@ ul.side-nav#nav-mobile li.section_tab a.section_item {
               opacity: 0;
               transition: all 0.5s; }
 
+.lg-icon {
+  font-family: 'lg' !important; }
+
 /*# sourceMappingURL=base.css.map */

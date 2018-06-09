@@ -4,6 +4,7 @@
 
 AZ.listenForMouseWheel = true;
 AZ.lastScrollTime = 0;
+AZ.canSwitchSection = true;
 AZ.onSectionActivated = null;
 
 const defaultScrollTimeout = 1000;
@@ -29,12 +30,12 @@ $(document).ready(function () {
 function prepareSwipeListener() {
     var foregroundLayer = $(".foreground_layer");
     /*var hammer = new Hammer(foregroundLayer[0]);
-    hammer.get('swipe').set({direction: Hammer.DIRECTION_VERTICAL});
-    hammer.on("swipe", function (e) {
-        console.log("Swiped!");
-        console.log(e);
-        // moveSection(e.angle);
-    });*/
+     hammer.get('swipe').set({direction: Hammer.DIRECTION_VERTICAL});
+     hammer.on("swipe", function (e) {
+     console.log("Swiped!");
+     console.log(e);
+     // moveSection(e.angle);
+     });*/
 
     var contentObjects = $(".content_object");
     contentObjects.each(function () {
@@ -46,7 +47,7 @@ function prepareSwipeListener() {
 
         const swipeThreshold = 50;
 
-        contentObject.on('touchstart', function(e){
+        contentObject.on('touchstart', function (e) {
             contentObject.startYPos = e.touches[0].pageY;
             contentObject.lastYPos = e.touches[0].pageY;
 
@@ -58,19 +59,19 @@ function prepareSwipeListener() {
             }
             // console.log(e);
         });
-        contentObject.on('touchmove', function(e){
+        contentObject.on('touchmove', function (e) {
 
             contentObject.lastYPos = e.touches[0].pageY;
             // console.log(e);
         });
-        contentObject.on('touchend', function(e){
+        contentObject.on('touchend', function (e) {
             var swipeValue = contentObject.lastYPos - contentObject.startYPos;
-            if(swipeValue>swipeThreshold){
-                if(contentObject.canSwipeUp){
+            if (swipeValue > swipeThreshold) {
+                if (contentObject.canSwipeUp) {
                     moveSection(1);
                 }
-            }else if(swipeValue<(swipeThreshold*-1)){
-                if(contentObject.canSwipeDown){
+            } else if (swipeValue < (swipeThreshold * -1)) {
+                if (contentObject.canSwipeDown) {
                     moveSection(-1);
                 }
             }
@@ -78,7 +79,7 @@ function prepareSwipeListener() {
             contentObject.canSwipeUp = false;
             contentObject.canSwipeDown = false;
         });
-        contentObject.on('touchcancel', function(e){
+        contentObject.on('touchcancel', function (e) {
             contentObject.canSwipeUp = false;
             contentObject.canSwipeDown = false;
             // console.log(e);
@@ -143,6 +144,10 @@ function prepareMouseWheelListener() {
 }
 
 function moveSection(direction) {
+    if (!AZ.canSwitchSection) {
+        return;
+    }
+
     AZ.lastClientY = -1;
     var sectionTabs = $("li.section_tab.mobile");
     var prevSectionId = null;

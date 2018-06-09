@@ -1,4 +1,37 @@
 @charset "UTF-8";
+.project-info .media-slider li.media-item a {
+  max-width: 300px !important;
+  max-height: 200px !important;
+  overflow: hidden; }
+  .project-info .media-slider li.media-item a .thumb-holder {
+    width: 300px !important;
+    height: 200px !important;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.33, 0.74, 0.64, 1.13);
+    border-radius: 3px; }
+    .project-info .media-slider li.media-item a .thumb-holder .play-icon-wrapper {
+      text-align: center;
+      width: 100%; }
+    .project-info .media-slider li.media-item a .thumb-holder.video {
+      box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.25); }
+  .project-info .media-slider li.media-item a:hover .thumb-holder {
+    box-shadow: inset 0 0 50px 1000px rgba(0, 0, 0, 0.25); }
+    .project-info .media-slider li.media-item a:hover .thumb-holder.video {
+      box-shadow: inset 0 0 50px 1000px rgba(0, 0, 0, 0.5); }
+.project-info .project-details ul li {
+  list-style-type: circle;
+  margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px; }
+  .project-info .project-details ul li .name {
+    font-weight: 600; }
+.project-info .project-details > ul li {
+  margin-bottom: 10px; }
+.project-info .lSSlideOuter .lSPager.lSpg > li:not(.active) a {
+  background-color: #bebebe; }
+
 .content_object {
   padding: 50px;
   background-color: rgba(0, 0, 0, 0.3);
@@ -95,28 +128,31 @@
     background-color: rgba(10, 10, 10, 0.6);
     padding: 12px; }
     .content_object[sectionId="projects"] .projects_wrapper .project_item {
-      padding: 20px;
-      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+      padding: 20px; }
       .content_object[sectionId="projects"] .projects_wrapper .project_item .project {
         background-color: rgba(20, 20, 20, 0.7);
         padding-left: 0;
         padding-right: 0;
         cursor: pointer;
-        transition: all 0.3s linear;
-        position: relative; }
+        position: relative;
+        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .content_object[sectionId="projects"] .projects_wrapper .project_item .project .project_image_wrapper {
           width: 100%;
           height: 200px;
           margin-bottom: 0;
           position: relative;
           background: rgba(10, 10, 10, 0.8);
-          background-size: 100%; }
+          background-size: 100%;
+          border-radius: 8px;
+          overflow: hidden; }
           .content_object[sectionId="projects"] .projects_wrapper .project_item .project .project_image_wrapper .project_image {
             height: 100%;
             width: 100%;
             background-size: cover;
             background-position: center;
-            transition: all 0.3s linear; }
+            border-radius: 8px;
+            box-shadow: inset 0 0 0 0px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s cubic-bezier(0.33, 0.74, 0.64, 1.13); }
           .content_object[sectionId="projects"] .projects_wrapper .project_item .project .project_image_wrapper .project_types_container {
             position: absolute;
             top: 5px;
@@ -139,7 +175,8 @@
           margin: 0 0 0 0;
           position: absolute;
           bottom: 0;
-          background-color: rgba(12, 155, 173, 0.9); }
+          background-color: rgba(12, 155, 173, 0.9);
+          border-radius: 0 0 5px 5px; }
           .content_object[sectionId="projects"] .projects_wrapper .project_item .project .project_title_wrapper .project_title {
             color: #eee;
             font-size: 1.3rem;
@@ -157,15 +194,17 @@
           .content_object[sectionId="projects"] .projects_wrapper .project_item .project .more_details_wrapper .more_details {
             border: 0px rgba(240, 240, 240, 0.9) solid;
             border-radius: 5px; }
-        .content_object[sectionId="projects"] .projects_wrapper .project_item .project:hover {
-          transform: scale(1.03, 1.03); }
+        .content_object[sectionId="projects"] .projects_wrapper .project_item .project:hover .project_image_wrapper .project_image {
+          transform: scale(1.2, 1.2);
+          box-shadow: inset 0 0 90px 30px rgba(0, 0, 0, 0.75); }
         .content_object[sectionId="projects"] .projects_wrapper .project_item .project:active {
           transform: scale(0.9, 0.9); }
     .content_object[sectionId="projects"] .projects_wrapper .project_infos_container {
       display: none; }
   .content_object #project-viewer-modal {
     background-color: #222;
-    color: white; }
+    color: white;
+    max-height: 80%; }
     .content_object #project-viewer-modal .modal-footer {
       background-color: #222;
       color: white; }

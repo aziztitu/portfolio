@@ -130,6 +130,8 @@ class ProjectData
     public $title;
     public $description = "";
     public $types = array();
+    public $infoVideos = array();
+    public $infoImages = array();
 
     public function __construct($id, $img_path, $title)
     {
@@ -142,6 +144,16 @@ class ProjectData
     public function addType($type)
     {
         array_push($this->types, $type);
+    }
+
+    public function addInfoVideo($link, $thumbPath)
+    {
+        array_push($this->infoVideos, ['link' => $link, 'thumbPath' => $thumbPath]);
+    }
+
+    public function addInfoImage($path, $thumbPath)
+    {
+        array_push($this->infoImages, ['path' => $path, 'thumbPath' => $thumbPath]);
     }
 }
 
@@ -280,6 +292,9 @@ class HomeController extends Controller
         $seamlessTimecard->addType($projectTypes[ProjectType::$web]);
         $seamlessTimecard->addType($projectTypes[ProjectType::$mobile]);
         $seamlessTimecard->addType($projectTypes[ProjectType::$desktop]);
+        $seamlessTimecard->addInfoVideo('https://www.youtube.com/watch?v=DGnTKMmLjc8', '/images/projects/seamless_timecard.png');
+        $seamlessTimecard->addInfoImage('/images/projects/seamless_timecard.png', '/images/projects/seamless_timecard.png');
+        $seamlessTimecard->addInfoImage('/images/projects/seamless_pos.jpg', '/images/projects/seamless_pos.jpg');
 
         $seamlessPos = new ProjectData("seamless_pos", "/images/projects/seamless_pos.jpg", "Seamless POS");
         $seamlessPos->addType($projectTypes[ProjectType::$web]);

@@ -15,11 +15,27 @@
 
 @section('head')
     @parent
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/home/main.css">
+    <link type="text/css" rel="stylesheet" href="css/lightslider.css" />
+    <link type="text/css" rel="stylesheet" href="css/lightgallery.css" />
+
     <script type="text/javascript" src="/js/common/typed.min.js"></script>
     <script type="text/javascript" src="/js/common/particles.min.js"></script>
     <script type="text/javascript" src="/js/home/hammer.min.js"></script>
+
+    <script src="js/lightslider.min.js"></script>
+    <script src="js/lightgallery.min.js"></script>
+    <script src="js/lg-fullscreen.min.js"></script>
+    <script src="js/lg-hash.min.js"></script>
+    <script src="js/lg-pager.min.js"></script>
+    <script src="js/lg-share.min.js"></script>
+    <script src="js/lg-thumbnail.min.js"></script>
+    <script src="js/lg-video.min.js"></script>
+    <script src="js/lg-zoom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+
     <script type="text/javascript" src="/js/home/main.js"></script>
-    <link rel="stylesheet" href="/css/home/main.css">
 @endsection
 
 @section("content_object_".$sectionData['welcome']->id)
@@ -181,14 +197,14 @@
             </div>
 
             {{--Project Infos--}}
-            <div class="project_infos_container">
+            <div id="project_infos_container" class="project_infos_container">
                 @foreach($sectionData['projects']->section_data[0]->projects as $project)
                     <div class="project_info_wrapper" projectid="{{$project->id}}">
                         <h4>{{$project->title}}</h4>
                         @if(View::exists('include.project_infos.'.$project->id))
-                            @include('include.project_infos.'.$project->id)
+                            @include('include.project_infos.'.$project->id, ['project' => $project])
                         @else
-                            @include('include.project_infos.dummy')
+                            @include('include.project_infos.dummy', ['project' => $project])
                         @endif
                     </div>
                 @endforeach
