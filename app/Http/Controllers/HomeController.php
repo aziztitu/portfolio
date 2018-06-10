@@ -336,6 +336,9 @@ class HomeController extends Controller
         $sauHonorsApp = new ProjectData("sau_honors_app", "/images/projects/honors_app.jpg", "SAU Honors College App");
         $sauHonorsApp->addType($projectTypes[ProjectType::$mobile]);
 
+        $azmapGenerator = new ProjectData("azmap_generator", "/images/projects/azmap_generator.png", "AZMAP Generator");
+        $azmapGenerator->addType($projectTypes[ProjectType::$desktop]);
+
         $miniRobot = new ProjectData("mini_robot", "/images/projects/mini_robot.jpg", "Mini Robot");
         $miniRobot->addType($projectTypes[ProjectType::$iot]);
         $miniRobot->addType($projectTypes[ProjectType::$mobile]);
@@ -344,8 +347,8 @@ class HomeController extends Controller
         $ironManHand = new ProjectData("iron_man_hand", "/images/projects/iron_man_glove.jpg", "Iron Man Glove");
         $ironManHand->addType($projectTypes[ProjectType::$iot]);
 
-        $azBrowser = new ProjectData("az_browser", "/images/projects/az_browser.jpg", "Floating Web Browser");
-        $azBrowser->addType($projectTypes[ProjectType::$desktop]);
+        $floatingWebBrowser = new ProjectData("floating_web_browser", "/images/projects/az_browser.jpg", "Floating Web Browser");
+        $floatingWebBrowser->addType($projectTypes[ProjectType::$desktop]);
 
         $chitChat = new ProjectData("chit_chat", "/images/projects/chit_chat.jpg", "Chit Chat");
         $chitChat->addType($projectTypes[ProjectType::$desktop]);
@@ -379,7 +382,8 @@ class HomeController extends Controller
         $projectCollection1->addProject($dealout);
         $projectCollection1->addProject($androidColorPickerLibrary);
         $projectCollection1->addProject($sauHonorsApp);
-        $projectCollection1->addProject($azBrowser);
+        $projectCollection1->addProject($azmapGenerator);
+        $projectCollection1->addProject($floatingWebBrowser);
         $projectCollection1->addProject($seamlessVNC);
         $projectCollection1->addProject($ddnsUpdater);
         $projectCollection1->addProject($azids);

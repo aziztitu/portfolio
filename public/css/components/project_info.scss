@@ -58,6 +58,13 @@
         .value {
           //font-style: italic;
         }
+
+        a {
+          cursor: pointer;
+          color: #6aaaff;
+          font-weight: 600;
+          border-bottom: 2px dotted;
+        }
       }
     }
 
