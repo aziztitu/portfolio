@@ -21,12 +21,12 @@
 @slot('projectDetails')
 <ul>
     <li>
-        I developed this tool using <b>JavaFX</b> in 2017 while working on the <a
+        I developed this tool using <b>JavaFX</b> in <b>2017</b> while working on the <a
                 onclick="showProjectInfo('sau_honors_app')">Honors College App</a> for the University.
     </li>
     <li>
-        While working on that app, I needed the map data to include custom data such as building description, room info,
-        and custom images. And hence, I ended up writing this tool to embed additional data to the KML data exported
+        While working on that app, I needed the map data to <b>include custom data such as building description, room info,
+        and custom images</b>. And hence, I ended up writing this tool to <b>embed additional data to the KML data</b> exported
         from Google Maps.
         <ul>
             <li>
