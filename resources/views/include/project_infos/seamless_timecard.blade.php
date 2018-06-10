@@ -34,7 +34,7 @@
             </li>
             <li>
                 <span class="name">Platforms/Libraries:</span>
-                <span class="value">Laravel, npm, Webpack, Amazon Lightsail, Git</span>
+                <span class="value">Apache, Laravel, npm, Webpack, Amazon Lightsail, Git</span>
             </li>
         </ul>
     </li>

@@ -68,6 +68,21 @@
     }
   }
 
+  .project-links {
+    ul {
+      li {
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        a {
+          color: #6aaaff;
+          font-weight: 600;
+          border-bottom: 2px dotted;
+        }
+      }
+    }
+  }
+
   .lSSlideOuter {
     .lSPager {
       &.lSpg {

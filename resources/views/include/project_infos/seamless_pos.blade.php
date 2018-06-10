@@ -64,7 +64,7 @@
         <ul>
             <li>
                 <span class="name">Languages Used:</span>
-                <span class="value">PHP, JavaScript, MySQL</span>
+                <span class="value">Apache, PHP, JavaScript, MySQL</span>
             </li>
         </ul>
     </li>
