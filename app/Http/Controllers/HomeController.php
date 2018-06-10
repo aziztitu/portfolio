@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
@@ -57,12 +58,16 @@ class SkillData
     public $name;
     public $experience;
     public $level;
+    public $icon_class;
+    public $icon_content;
 
-    public function __construct($name, $experience, $level)
+    public function __construct($name, $experience, $level, $icon_class = 'icon-shell', $icon_content = '')
     {
         $this->name = $name;
         $this->experience = $experience;
         $this->level = $level;
+        $this->icon_class = $icon_class;
+        $this->icon_content = $icon_content;
     }
 }
 
@@ -139,6 +144,8 @@ class ProjectData
         if ($img_path != "")
             $this->img_path = $img_path;
         $this->title = $title;
+
+        $this->retrieveInfoImages();
     }
 
     public function addType($type)
@@ -146,14 +153,35 @@ class ProjectData
         array_push($this->types, $type);
     }
 
-    public function addInfoVideo($link, $thumbPath)
+    public function addInfoVideo($link, $thumbPath, $ratio = 1.5)
     {
-        array_push($this->infoVideos, ['link' => $link, 'thumbPath' => $thumbPath]);
+        array_push($this->infoVideos, ['link' => $link, 'thumbPath' => $thumbPath, 'ratio' => $ratio]);
     }
 
-    public function addInfoImage($path, $thumbPath)
+    public function addInfoImage($path, $thumbPath, $ratio = 1.5)
     {
-        array_push($this->infoImages, ['path' => $path, 'thumbPath' => $thumbPath]);
+        array_push($this->infoImages, ['path' => $path, 'thumbPath' => $thumbPath, 'ratio' => $ratio]);
+    }
+
+    private function retrieveInfoImages()
+    {
+        $projectInfoDirName = 'project_info/' . $this->id;
+
+        $publicStorageDisk = Storage::disk('public');
+        $filenames = $publicStorageDisk->files($projectInfoDirName);
+
+        foreach ($filenames as $filename) {
+            $img_data = getimagesize($publicStorageDisk->url($filename));
+            $width = $img_data[0];
+            $height = $img_data[1];
+
+            $publicFilename = $publicStorageDisk->url($filename);
+            $publicThumbFilename = $publicStorageDisk->url(dirname($filename) . '/thumbs/' . basename($filename));
+
+            $this->addInfoImage($publicFilename, $publicThumbFilename, $width/$height);
+        }
+
+//        echo var_dump($filenames);
     }
 }
 
@@ -246,33 +274,33 @@ class HomeController extends Controller
         $skillSets = array();
 
         $programmingSkillSet = new SkillSet("Programming Languages");
-        $programmingSkillSet->addSkill(new SkillData("Java", 6, 85));
-        $programmingSkillSet->addSkill(new SkillData("PHP", 6, 85));
-        $programmingSkillSet->addSkill(new SkillData("JavaScript", 6, 85));
-        $programmingSkillSet->addSkill(new SkillData("C#", 4, 75));
-        $programmingSkillSet->addSkill(new SkillData("C++", 4, 70));
-        $programmingSkillSet->addSkill(new SkillData("Python", 4, 70));
-        $programmingSkillSet->addSkill(new SkillData("MySQL", 6, 80));
-        $programmingSkillSet->addSkill(new SkillData("HTML", 7, 95));
-        $programmingSkillSet->addSkill(new SkillData("CSS", 7, 90));
+        $programmingSkillSet->addSkill(new SkillData("Java", 6, 85, 'icon-java-bold'));
+        $programmingSkillSet->addSkill(new SkillData("PHP", 6, 85, 'icon-php-alt'));
+        $programmingSkillSet->addSkill(new SkillData("JavaScript", 6, 85, 'icon-javascript-alt'));
+        $programmingSkillSet->addSkill(new SkillData("C#", 4, 75, 'icon-csharp'));
+        $programmingSkillSet->addSkill(new SkillData("C++", 4, 70, 'icon-cplusplus'));
+        $programmingSkillSet->addSkill(new SkillData("Python", 4, 70, 'icon-python'));
+        $programmingSkillSet->addSkill(new SkillData("MySQL", 6, 80, 'icon-mysql'));
+        $programmingSkillSet->addSkill(new SkillData("HTML5", 7, 95, 'icon-html5'));
+        $programmingSkillSet->addSkill(new SkillData("CSS3", 7, 90, 'icon-css3'));
 
         $platformsSkillSet = new SkillSet("Platforms/Libraries");
-        $platformsSkillSet->addSkill(new SkillData("Web Development", 5, 90));
-        $platformsSkillSet->addSkill(new SkillData("Android Development", 5, 80));
-        $platformsSkillSet->addSkill(new SkillData("Windows Development", 7, 85));
-        $platformsSkillSet->addSkill(new SkillData("Game Development", 4, 80));
-        $platformsSkillSet->addSkill(new SkillData("Internet of Things", 2, 65));
-        $platformsSkillSet->addSkill(new SkillData("Unity3D", 3, 80));
-        $platformsSkillSet->addSkill(new SkillData("jQuery", 6, 85));
-        $platformsSkillSet->addSkill(new SkillData("React JS", 2, 70));
-        $platformsSkillSet->addSkill(new SkillData("TypeScript", 2, 85));
-        $platformsSkillSet->addSkill(new SkillData("Laravel", 3, 75));
-        $platformsSkillSet->addSkill(new SkillData("Windows Presentation Framework (WPF)", 3, 60));
-        $platformsSkillSet->addSkill(new SkillData("JSP", 2, 60));
-        $platformsSkillSet->addSkill(new SkillData("Django", 1, 55));
-        $platformsSkillSet->addSkill(new SkillData("Git", 5, 90));
-        $platformsSkillSet->addSkill(new SkillData("Processing", 2, 75));
-        $platformsSkillSet->addSkill(new SkillData("Arduino", 2, 75));
+        $platformsSkillSet->addSkill(new SkillData("Web Development", 5, 90, 'material-icons', 'web'));
+        $platformsSkillSet->addSkill(new SkillData("Android Development", 5, 80, 'devicon-android-plain'));
+        $platformsSkillSet->addSkill(new SkillData("Windows Development", 7, 85, 'devicon-windows8-original'));
+        $platformsSkillSet->addSkill(new SkillData("Game Development", 4, 80, 'material-icons', 'videogame_asset'));
+        $platformsSkillSet->addSkill(new SkillData("Internet of Things", 2, 65, 'material-icons', 'devices_other'));
+        $platformsSkillSet->addSkill(new SkillData("Unity3D", 3, 80, 'icon-unity'));
+        $platformsSkillSet->addSkill(new SkillData("jQuery", 6, 85, 'icon-jquery'));
+        $platformsSkillSet->addSkill(new SkillData("React JS", 2, 70, 'icon-reactjs'));
+        $platformsSkillSet->addSkill(new SkillData("TypeScript", 2, 85, 'devicon-typescript-plain'));
+        $platformsSkillSet->addSkill(new SkillData("Laravel", 3, 75, 'icon-laravel'));
+        $platformsSkillSet->addSkill(new SkillData("Windows Presentation Framework (WPF)", 3, 60, 'material-icons', 'laptop_windows'));
+        $platformsSkillSet->addSkill(new SkillData("JSP", 2, 60, 'material-icons', 'code'));
+        $platformsSkillSet->addSkill(new SkillData("Django", 1, 55, 'devicon-django-plain'));
+        $platformsSkillSet->addSkill(new SkillData("Git", 5, 90, 'devicon-git-plain'));
+        $platformsSkillSet->addSkill(new SkillData("Processing", 2, 75, 'material-icons', 'code'));
+        $platformsSkillSet->addSkill(new SkillData("Arduino", 2, 75, 'material-icons', 'code'));
 
         array_push($skillSets, $programmingSkillSet);
         array_push($skillSets, $platformsSkillSet);
@@ -292,9 +320,7 @@ class HomeController extends Controller
         $seamlessTimecard->addType($projectTypes[ProjectType::$web]);
         $seamlessTimecard->addType($projectTypes[ProjectType::$mobile]);
         $seamlessTimecard->addType($projectTypes[ProjectType::$desktop]);
-        $seamlessTimecard->addInfoVideo('https://www.youtube.com/watch?v=DGnTKMmLjc8', '/images/projects/seamless_timecard.png');
-        $seamlessTimecard->addInfoImage('/images/projects/seamless_timecard.png', '/images/projects/seamless_timecard.png');
-        $seamlessTimecard->addInfoImage('/images/projects/seamless_pos.jpg', '/images/projects/seamless_pos.jpg');
+        $seamlessTimecard->addInfoVideo('https://www.youtube.com/watch?v=DGnTKMmLjc8', '/storage/project_info/seamless_timecard/thumbs/3_windows_1.png');
 
         $seamlessPos = new ProjectData("seamless_pos", "/images/projects/seamless_pos.jpg", "Seamless POS");
         $seamlessPos->addType($projectTypes[ProjectType::$web]);

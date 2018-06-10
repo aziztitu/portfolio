@@ -119,10 +119,12 @@ function initSections() {
 
     $('.skills_wrapper').find('.skill').each(function () {
         let nameObj = $(this).find('.skill_name');
+        let skillIconObj = $(this).find('.skill_icon');
         let experienceObj = $(this).find('.skill_experience');
         let levelObj = $(this).find('.skill_level');
 
         nameObj.css('opacity', 0);
+        skillIconObj.css('opacity', 0);
         experienceObj.css('opacity', 0);
         levelObj.css('opacity', 0);
         levelObj.css('width', 0);
@@ -165,12 +167,14 @@ function onSkillsActivated() {
     let delay = 0;
     $('.skills_wrapper').find('.skill').each(function () {
         let nameObj = $(this).find('.skill_name');
+        let skillIconObj = $(this).find('.skill_icon');
         let experienceObj = $(this).find('.skill_experience');
         let levelObj = $(this).find('.skill_level');
 
         let duration = 100;
         setTimeout(function () {
             nameObj.css("opacity", 1);
+            skillIconObj.css("opacity", 1);
             experienceObj.css("opacity", 1);
             levelObj.css("opacity", 1);
             levelObj.css('width', levelObj.attr('skill-level'));
@@ -279,12 +283,28 @@ function showProjectInfo(projectId) {
     let projectInfoWrapper = $('#project_infos_container').find('.project_info_wrapper[projectid=' + projectId + ']');
 
     let clonedProjectInfo = projectInfoWrapper.clone();
+
+    projectViewerModal.find('.modal-content').empty();
+    projectViewerModal.find('.modal-content').append(clonedProjectInfo);
+
+    projectViewerModal.modal('open');
+
     let mediaSlider = clonedProjectInfo.find('.media-slider');
+    mediaSlider.find('.thumb-holder').each(function () {
+        let ratio = +$(this).attr('data-ratio');
+
+        let height = +$(this).height();
+        let newWidth = height * ratio;
+
+        $(this).width(newWidth);
+    });
+
     mediaSlider.lightSlider({
         autoWidth: true,
         enableDrag: false,
         onSliderLoad: function(el) {
             mediaSlider.removeClass('cS-hidden');
+
             mediaSlider.lightGallery({
                 autoplay: true,
                 exThumbImage: 'data-thumb'
@@ -299,11 +319,6 @@ function showProjectInfo(projectId) {
             });
         }
     });
-
-    projectViewerModal.find('.modal-content').empty();
-    projectViewerModal.find('.modal-content').append(clonedProjectInfo);
-
-    projectViewerModal.modal('open');
 }
 
 

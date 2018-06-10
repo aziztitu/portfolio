@@ -21,9 +21,12 @@
             @if(isset($project))
                 <ul class="media-slider cS-hidden">
                     @foreach($project->infoVideos as $infoVideo)
-                        <li class="media-item" data-src="{{$infoVideo['link']}}" data-thumb="{{$infoVideo['thumbPath']}}">
+                        <li class="media-item" data-src="{{$infoVideo['link']}}"
+                            data-thumb="{{$infoVideo['thumbPath']}}">
                             <a>
-                                <div class="thumb-holder valign-wrapper video" style='background-image: url("{{$infoVideo['thumbPath']}}")'>
+                                <div class="thumb-holder valign-wrapper video"
+                                     style='background-image: url("{{$infoVideo['thumbPath']}}")'
+                                     data-ratio="{{$infoVideo['ratio']}}">
                                     <div class="play-icon-wrapper">
                                         <img class="valign center" src="img/play-button.png"/>
                                     </div>
@@ -33,9 +36,11 @@
                     @endforeach
 
                     @foreach($project->infoImages as $infoImage)
-                        <li class="media-item" data-src="{{$infoImage['path']}}" data-thumb="{{$infoImage['thumbPath']}}">
+                        <li class="media-item" data-src="{{$infoImage['path']}}"
+                            data-thumb="{{$infoImage['thumbPath']}}">
                             <a>
-                                <div class="thumb-holder" style='background-image: url("{{$infoImage['thumbPath']}}")'></div>
+                                <div class="thumb-holder" style='background-image: url("{{$infoImage['thumbPath']}}")'
+                                     data-ratio="{{$infoImage['ratio']}}"></div>
                             </a>
                         </li>
                     @endforeach

@@ -30,7 +30,7 @@
         <ul>
             <li>
                 <span class="name">Languages Used:</span>
-                <span class="value">PHP, JavaScript (TypeScript), MySql, HTML, SCSS</span>
+                <span class="value">PHP, JavaScript (TypeScript), MySQL, HTML, SCSS</span>
             </li>
             <li>
                 <span class="name">Platforms/Libraries:</span>

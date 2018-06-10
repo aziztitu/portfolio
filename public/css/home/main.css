@@ -1,11 +1,10 @@
 @charset "UTF-8";
 .project-info .media-slider li.media-item a {
-  max-width: 300px !important;
   max-height: 200px !important;
   overflow: hidden; }
   .project-info .media-slider li.media-item a .thumb-holder {
-    width: 300px !important;
     height: 200px !important;
+    max-width: 300px;
     background-size: cover;
     background-position: center;
     cursor: pointer;
@@ -20,6 +19,8 @@
     box-shadow: inset 0 0 50px 1000px rgba(0, 0, 0, 0.25); }
     .project-info .media-slider li.media-item a:hover .thumb-holder.video {
       box-shadow: inset 0 0 50px 1000px rgba(0, 0, 0, 0.5); }
+.project-info .media-slider li.media-item:last-child {
+  margin-right: 0px !important; }
 .project-info .project-details ul li {
   list-style-type: circle;
   margin-left: 20px;
@@ -88,6 +89,10 @@
       color: white;
       font-size: large;
       font-weight: 600;
+      transition: all 1.25s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .content_object[sectionId="skills"] .skills_wrapper .skill .skill_icon {
+      color: white;
+      font-size: xx-large;
       transition: all 1.25s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .content_object[sectionId="skills"] .skills_wrapper .skill .skill_experience {
       color: white;

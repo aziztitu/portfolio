@@ -19,4 +19,8 @@
 
 @endslot
 
+@slot('projectLinks')
+
+@endslot
+
 @endcomponent

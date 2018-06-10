@@ -2,13 +2,12 @@
   .media-slider {
     li.media-item {
       a {
-        max-width: 300px !important;
         max-height: 200px !important;
         overflow: hidden;
 
         .thumb-holder {
-          width: 300px !important;
           height: 200px !important;
+          max-width: 300px;
           background-size: cover;
           background-position: center;
           cursor: pointer;
@@ -35,6 +34,10 @@
             }
           }
         }
+      }
+
+      &:last-child {
+        margin-right: 0px !important;
       }
     }
   }

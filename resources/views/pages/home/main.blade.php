@@ -16,9 +16,13 @@
 @section('head')
     @parent
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" type="text/css" rel="stylesheet"/>
+    {{--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">--}}
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+
     <link rel="stylesheet" href="/css/home/main.css">
-    <link type="text/css" rel="stylesheet" href="css/lightslider.css" />
-    <link type="text/css" rel="stylesheet" href="css/lightgallery.css" />
+    <link rel="stylesheet" href="/css/font-mfizz/font-mfizz.css">
+    <link type="text/css" rel="stylesheet" href="css/lightslider.css"/>
+    <link type="text/css" rel="stylesheet" href="css/lightgallery.css"/>
 
     <script type="text/javascript" src="/js/common/typed.min.js"></script>
     <script type="text/javascript" src="/js/common/particles.min.js"></script>
@@ -71,7 +75,9 @@
                     @foreach($sectionData['about_me']->section_data as $fieldValuePairs)
                         <tr>
                             <td class="field right-align">{{$fieldValuePairs->field}}</td>
-                            <td class="value"><span class="content" id="aboutMeTypeData_{{$loop->index}}">{{$fieldValuePairs->value}}</span></td>
+                            <td class="value"><span class="content"
+                                                    id="aboutMeTypeData_{{$loop->index}}">{{$fieldValuePairs->value}}</span>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
@@ -107,12 +113,14 @@
                     </div>
                     @foreach($skillSet->skills as $skill)
                         <div class="skill col s12 m12 l6">
-                        <div class="row">
                             <div class="row">
-                                <div class="col s8">
-                                    <span class="skill_name">{{$skill->name}}</span>
-                                </div>
-                                <div class="col s4 right-align">
+                                <div class="row">
+                                    <div class="col s8 valign-wrapper">
+                                        <i class="{{$skill->icon_class}} skill_icon">{{$skill->icon_content}}</i>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span class="skill_name">{{$skill->name}}</span>
+                                    </div>
+                                    <div class="col s4 right-align">
                                     <span class="skill_experience waves-effect">{{$skill->experience}}
                                         @if($skill->experience<=1)
                                             year
@@ -120,17 +128,18 @@
                                             years
                                         @endif
                                     </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s12">
-                                    <div class="progress skill_level_wrapper">
-                                        <div class="determinate skill_level" style="width: {{$skill->level}}%" skill-level="{{$skill->level}}%"></div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="progress skill_level_wrapper">
+                                            <div class="determinate skill_level" style="width: {{$skill->level}}%"
+                                                 skill-level="{{$skill->level}}%"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -240,10 +249,11 @@
         <div class="contact_me_wrapper">
             <div class="row">
                 <div class="contact_items_wrapper expand">
-                    <a href="https://www.linkedin.com/in/aziztitu-murugan/" target="_blank" class="contact_item social_media">
+                    <a href="https://www.linkedin.com/in/aziztitu-murugan/" target="_blank"
+                       class="contact_item social_media">
                         <span class="mdi mdi-linkedin mdi-36px"></span>
                     </a>
-                    <a href="https://www.facebook.com/aziz.titu.5" target="_blank"  class="contact_item social_media">
+                    <a href="https://www.facebook.com/aziz.titu.5" target="_blank" class="contact_item social_media">
                         <span class="mdi mdi-facebook mdi-36px"></span>
                     </a>
                     <a href="https://github.com/AzeeSoft" target="_blank" class="contact_item social_media">
@@ -315,7 +325,8 @@
     <div class="section_data valign-wrapper">
         <div class="row resume_wrapper expand">
             <div class="expand center-align">
-                <a href="{{$sectionData['resume']->section_data->resumeURL}}" target="_blank" class="btn waves-effect view_download">View / Download
+                <a href="{{$sectionData['resume']->section_data->resumeURL}}" target="_blank"
+                   class="btn waves-effect view_download">View / Download
                     Resume</a>
             </div>
         </div>
