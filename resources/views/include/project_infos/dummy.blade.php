@@ -11,7 +11,7 @@
 
 @slot('projectDescription')
 <p>
-    Info Not Available
+    Project info will be added soon
 </p>
 @endslot
 

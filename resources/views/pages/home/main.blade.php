@@ -224,7 +224,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat red-text">Close</a>
+                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat red-text">Close</a>
                 </div>
             </div>
 

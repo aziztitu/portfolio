@@ -37,40 +37,6 @@ class FieldValuePair
     }
 }
 
-class SkillSet
-{
-    public $name;
-    public $skills = array();
-
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
-
-    public function addSkill($skill)
-    {
-        array_push($this->skills, $skill);
-    }
-}
-
-class SkillData
-{
-    public $name;
-    public $experience;
-    public $level;
-    public $icon_class;
-    public $icon_content;
-
-    public function __construct($name, $experience, $level, $icon_class = 'icon-shell', $icon_content = '')
-    {
-        $this->name = $name;
-        $this->experience = $experience;
-        $this->level = $level;
-        $this->icon_class = $icon_class;
-        $this->icon_content = $icon_content;
-    }
-}
-
 
 class ProjectCollection
 {
@@ -178,12 +144,48 @@ class ProjectData
             $publicFilename = $publicStorageDisk->url($filename);
             $publicThumbFilename = $publicStorageDisk->url(dirname($filename) . '/thumbs/' . basename($filename));
 
-            $this->addInfoImage($publicFilename, $publicThumbFilename, $width/$height);
+            $this->addInfoImage($publicFilename, $publicThumbFilename, $width / $height);
         }
 
 //        echo var_dump($filenames);
     }
 }
+
+
+class SkillSet
+{
+    public $name;
+    public $skills = array();
+
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+
+    public function addSkill($skill)
+    {
+        array_push($this->skills, $skill);
+    }
+}
+
+class SkillData
+{
+    public $name;
+    public $experience;
+    public $level;
+    public $icon_class;
+    public $icon_content;
+
+    public function __construct($name, $experience, $level, $icon_class = 'icon-shell', $icon_content = '')
+    {
+        $this->name = $name;
+        $this->experience = $experience;
+        $this->level = $level;
+        $this->icon_class = $icon_class;
+        $this->icon_content = $icon_content;
+    }
+}
+
 
 class ContactMeData
 {
@@ -192,10 +194,12 @@ class ContactMeData
     public $address;
 }
 
+
 class ResumeData
 {
     public $resumeURL;
 }
+
 
 class HomeController extends Controller
 {
@@ -219,8 +223,8 @@ class HomeController extends Controller
     {
         $welcomeSection = new Section("welcome", "Welcome", "home", "/images/home/bg/tech_bg2.jpg");
         $aboutMeSection = new Section("about_me", "About Me", "person", "/images/home/bg/personal_bg2.jpg");
-        $skillsSection = new Section("skills", "Skills", "star", "/images/home/bg/skills_bg1.jpg");
         $projectsSection = new Section("projects", "Projects", "devices_other", "/images/home/bg/project_bg1.jpg");
+        $skillsSection = new Section("skills", "Skills", "star", "/images/home/bg/skills_bg1.jpg");
         $educationSection = new Section("education", "Education", "school", "/images/home/bg/education_bg1.jpg");
         $contactMeSection = new Section("contact_me", "Contact Me", "question_answer", "/images/home/bg/contact_bg1.jpg");
         $resumeSection = new Section("resume", "Resume", "receipt", "/images/home/bg/tech_bg3.jpg");
@@ -234,8 +238,8 @@ class HomeController extends Controller
         return [
             'welcome' => $welcomeSection,
             'about_me' => $aboutMeSection,
-            'skills' => $skillsSection,
             'projects' => $projectsSection,
+            'skills' => $skillsSection,
 //            'education' => $educationSection,
             'contact_me' => $contactMeSection,
             'resume' => $resumeSection
@@ -266,6 +270,98 @@ class HomeController extends Controller
             $phone,
             $email,
             $lookingFor
+        ];
+    }
+
+    private function createProjectsData()
+    {
+        $projectTypes = ProjectType::getProjectTypes();
+
+        $projectCollection1 = new ProjectCollection("Default");
+        $projectCollection1->setProjectTypes($projectTypes);
+
+        $seamlessTimecard = new ProjectData("seamless_timecard", "/images/projects/thumbs/seamless_timecard.png", "Seamless Timecard");
+        $seamlessTimecard->description = "Seamless Timecard is an end-to-end solution for employee scheduling and attendance management. I developed apps for Android and Windows that the employees use to clock in and out. I also developed the website with a dashboard that the employer can use to manage the employees.";
+        $seamlessTimecard->addType($projectTypes[ProjectType::$web]);
+        $seamlessTimecard->addType($projectTypes[ProjectType::$mobile]);
+        $seamlessTimecard->addType($projectTypes[ProjectType::$desktop]);
+        $seamlessTimecard->addInfoVideo('https://www.youtube.com/watch?v=DGnTKMmLjc8', '/storage/project_info/seamless_timecard/thumbs/3_windows_1.png');
+
+        $seamlessPos = new ProjectData("seamless_pos", "/images/projects/thumbs/seamless_pos.jpg", "Seamless POS");
+        $seamlessPos->addType($projectTypes[ProjectType::$web]);
+        $seamlessPos->addType($projectTypes[ProjectType::$desktop]);
+        $seamlessPos->addType($projectTypes[ProjectType::$mobile]);
+
+        $dealout = new ProjectData("dealout", "/images/projects/thumbs/dealout.jpg", "DealOut");
+        $dealout->addType($projectTypes[ProjectType::$mobile]);
+
+        $androidColorPickerLibrary = new ProjectData("android_color_picker_library", "/images/projects/thumbs/android_color_picker.jpg", "Android Color Picker Library");
+        $androidColorPickerLibrary->addType($projectTypes[ProjectType::$mobile]);
+
+        $sauHonorsApp = new ProjectData("sau_honors_app", "/images/projects/thumbs/honors_app.jpg", "SAU Honors College App");
+        $sauHonorsApp->addType($projectTypes[ProjectType::$mobile]);
+
+        $azmapGenerator = new ProjectData("azmap_generator", "/images/projects/thumbs/azmap_generator.png", "AZMAP Generator");
+        $azmapGenerator->addType($projectTypes[ProjectType::$desktop]);
+
+        $miniRobot = new ProjectData("mini_robot", "/images/projects/thumbs/mini_robot.jpg", "Mini Robot");
+        $miniRobot->addType($projectTypes[ProjectType::$iot]);
+        $miniRobot->addType($projectTypes[ProjectType::$mobile]);
+        $miniRobot->addType($projectTypes[ProjectType::$desktop]);
+
+        $ironManGlove = new ProjectData("iron_man_glove", "/images/projects/thumbs/iron_man_glove.jpg", "Iron Man Glove");
+        $ironManGlove->addType($projectTypes[ProjectType::$iot]);
+        $ironManGlove->addType($projectTypes[ProjectType::$desktop]);
+
+        $floatingWebBrowser = new ProjectData("floating_web_browser", "/images/projects/thumbs/floating_web_browser.jpg", "Floating Web Browser");
+        $floatingWebBrowser->addType($projectTypes[ProjectType::$desktop]);
+
+        $chitChat = new ProjectData("chit_chat", "/images/projects/thumbs/chit_chat.jpg", "Chit Chat");
+        $chitChat->addType($projectTypes[ProjectType::$desktop]);
+
+        $ddnsUpdater = new ProjectData("ddns_updater", "/images/projects/thumbs/ddns_updater.jpg", "DDNS Updater");
+        $ddnsUpdater->addType($projectTypes[ProjectType::$desktop]);
+        $ddnsUpdater->addType($projectTypes[ProjectType::$mobile]);
+        $ddnsUpdater->addType($projectTypes[ProjectType::$web]);
+
+        $ids = new ProjectData("ids", "/images/projects/thumbs/ids.jpg", "Intrusion Detection System (Demo)");
+        $ids->addType($projectTypes[ProjectType::$desktop]);
+
+
+        $seamlessVNC = new ProjectData("seamless_vnc", "/images/projects/thumbs/seamless_vnc.jpg", "Seamless VNC");
+        $seamlessVNC->addType($projectTypes[ProjectType::$desktop]);
+
+        $wiiPCRemote = new ProjectData("wii_pc_remote", "", "Wii PC Remote");
+        $wiiPCRemote->addType($projectTypes[ProjectType::$desktop]);
+
+        $sauCricketGame = new ProjectData("sau_cricket_game", "/images/projects/thumbs/sau_cricket_game.jpg", "SAU Cricket Game");
+        $sauCricketGame->addType($projectTypes[ProjectType::$desktop]);
+        $sauCricketGame->addType($projectTypes[ProjectType::$game]);
+
+        $repulse = new ProjectData("repulse", "/images/projects/thumbs/repulse.jpg", "Repulse");
+        $repulse->addType($projectTypes[ProjectType::$desktop]);
+        $repulse->addType($projectTypes[ProjectType::$game]);
+
+
+        $projectCollection1->addProject($seamlessTimecard);
+        $projectCollection1->addProject($seamlessPos);
+        $projectCollection1->addProject($dealout);
+        $projectCollection1->addProject($androidColorPickerLibrary);
+        $projectCollection1->addProject($sauHonorsApp);
+        $projectCollection1->addProject($azmapGenerator);
+        $projectCollection1->addProject($floatingWebBrowser);
+        $projectCollection1->addProject($seamlessVNC);
+        $projectCollection1->addProject($ddnsUpdater);
+        $projectCollection1->addProject($ids);
+        $projectCollection1->addProject($chitChat);
+        $projectCollection1->addProject($miniRobot);
+        $projectCollection1->addProject($ironManGlove);
+        $projectCollection1->addProject($wiiPCRemote);
+        $projectCollection1->addProject($sauCricketGame);
+        $projectCollection1->addProject($repulse);
+
+        return [
+            $projectCollection1
         ];
     }
 
@@ -306,97 +402,6 @@ class HomeController extends Controller
         array_push($skillSets, $platformsSkillSet);
 
         return $skillSets;
-    }
-
-    private function createProjectsData()
-    {
-        $projectTypes = ProjectType::getProjectTypes();
-
-        $projectCollection1 = new ProjectCollection("Default");
-        $projectCollection1->setProjectTypes($projectTypes);
-
-        $seamlessTimecard = new ProjectData("seamless_timecard", "/images/projects/seamless_timecard.png", "Seamless Timecard");
-        $seamlessTimecard->description = "Seamless Timecard is an end-to-end solution for employee scheduling and attendance management. I developed apps for Android and Windows that the employees use to clock in and out. I also developed the website with a dashboard that the employer can use to manage the employees.";
-        $seamlessTimecard->addType($projectTypes[ProjectType::$web]);
-        $seamlessTimecard->addType($projectTypes[ProjectType::$mobile]);
-        $seamlessTimecard->addType($projectTypes[ProjectType::$desktop]);
-        $seamlessTimecard->addInfoVideo('https://www.youtube.com/watch?v=DGnTKMmLjc8', '/storage/project_info/seamless_timecard/thumbs/3_windows_1.png');
-
-        $seamlessPos = new ProjectData("seamless_pos", "/images/projects/seamless_pos.jpg", "Seamless POS");
-        $seamlessPos->addType($projectTypes[ProjectType::$web]);
-        $seamlessPos->addType($projectTypes[ProjectType::$desktop]);
-        $seamlessPos->addType($projectTypes[ProjectType::$mobile]);
-
-        $dealout = new ProjectData("dealout", "/images/projects/dealout.jpg", "DealOut");
-        $dealout->addType($projectTypes[ProjectType::$mobile]);
-
-        $androidColorPickerLibrary = new ProjectData("android_color_picker_library", "/images/projects/android_color_picker.jpg", "Android Color Picker Library");
-        $androidColorPickerLibrary->addType($projectTypes[ProjectType::$mobile]);
-
-        $sauHonorsApp = new ProjectData("sau_honors_app", "/images/projects/honors_app.jpg", "SAU Honors College App");
-        $sauHonorsApp->addType($projectTypes[ProjectType::$mobile]);
-
-        $azmapGenerator = new ProjectData("azmap_generator", "/images/projects/azmap_generator.png", "AZMAP Generator");
-        $azmapGenerator->addType($projectTypes[ProjectType::$desktop]);
-
-        $miniRobot = new ProjectData("mini_robot", "/images/projects/mini_robot.jpg", "Mini Robot");
-        $miniRobot->addType($projectTypes[ProjectType::$iot]);
-        $miniRobot->addType($projectTypes[ProjectType::$mobile]);
-        $miniRobot->addType($projectTypes[ProjectType::$desktop]);
-
-        $ironManHand = new ProjectData("iron_man_hand", "/images/projects/iron_man_glove.jpg", "Iron Man Glove");
-        $ironManHand->addType($projectTypes[ProjectType::$iot]);
-
-        $floatingWebBrowser = new ProjectData("floating_web_browser", "/images/projects/az_browser.jpg", "Floating Web Browser");
-        $floatingWebBrowser->addType($projectTypes[ProjectType::$desktop]);
-
-        $chitChat = new ProjectData("chit_chat", "/images/projects/chit_chat.jpg", "Chit Chat");
-        $chitChat->addType($projectTypes[ProjectType::$desktop]);
-
-        $ddnsUpdater = new ProjectData("ddns_updater", "/images/projects/ddns_updater.jpg", "DDNS Updater");
-        $ddnsUpdater->addType($projectTypes[ProjectType::$desktop]);
-        $ddnsUpdater->addType($projectTypes[ProjectType::$mobile]);
-        $ddnsUpdater->addType($projectTypes[ProjectType::$web]);
-
-        $azids = new ProjectData("azids", "/images/projects/azids.jpg", "AZ Intrusion Detection System (Demo)");
-        $azids->addType($projectTypes[ProjectType::$desktop]);
-
-
-        $seamlessVNC = new ProjectData("seamless_vnc", "/images/projects/seamless_vnc.jpg", "Seamless VNC");
-        $seamlessVNC->addType($projectTypes[ProjectType::$desktop]);
-
-        $wiiPCRemote = new ProjectData("wii_pc_remote", "", "Wii PC Remote");
-        $wiiPCRemote->addType($projectTypes[ProjectType::$desktop]);
-
-        $sauCricketGame = new ProjectData("sau_cricket_game", "/images/projects/sau_cricket_game.jpg", "SAU Cricket Game");
-        $sauCricketGame->addType($projectTypes[ProjectType::$desktop]);
-        $sauCricketGame->addType($projectTypes[ProjectType::$game]);
-
-        $repulse = new ProjectData("repulse", "/images/projects/repulse.jpg", "Repulse");
-        $repulse->addType($projectTypes[ProjectType::$desktop]);
-        $repulse->addType($projectTypes[ProjectType::$game]);
-
-
-        $projectCollection1->addProject($seamlessTimecard);
-        $projectCollection1->addProject($seamlessPos);
-        $projectCollection1->addProject($dealout);
-        $projectCollection1->addProject($androidColorPickerLibrary);
-        $projectCollection1->addProject($sauHonorsApp);
-        $projectCollection1->addProject($azmapGenerator);
-        $projectCollection1->addProject($floatingWebBrowser);
-        $projectCollection1->addProject($seamlessVNC);
-        $projectCollection1->addProject($ddnsUpdater);
-        $projectCollection1->addProject($azids);
-        $projectCollection1->addProject($chitChat);
-        $projectCollection1->addProject($miniRobot);
-        $projectCollection1->addProject($ironManHand);
-        $projectCollection1->addProject($wiiPCRemote);
-        $projectCollection1->addProject($sauCricketGame);
-        $projectCollection1->addProject($repulse);
-
-        return [
-            $projectCollection1
-        ];
     }
 
     private function createContactMeData()
