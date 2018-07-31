@@ -370,15 +370,15 @@ class HomeController extends Controller
         $projectCollection1->addProject($ddnsUpdater);
         $projectCollection1->addProject($ids);
         $projectCollection1->addProject($chitChat);
-        $projectCollection1->addProject($miniRobot);
-        $projectCollection1->addProject($ironManGlove);
-        $projectCollection1->addProject($wiiPCRemote);
         $projectCollection1->addProject($malware);
         $projectCollection1->addProject($lightningWizard);
         $projectCollection1->addProject($cashFlow);
         $projectCollection1->addProject($peckyTheWoodpecker);
         $projectCollection1->addProject($repulse);
         $projectCollection1->addProject($sauCricketGame);
+        $projectCollection1->addProject($miniRobot);
+        $projectCollection1->addProject($ironManGlove);
+        $projectCollection1->addProject($wiiPCRemote);
 
         return [
             $projectCollection1
