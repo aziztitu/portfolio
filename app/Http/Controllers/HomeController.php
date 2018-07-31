@@ -358,6 +358,7 @@ class HomeController extends Controller
         $malware = new ProjectData("malware", "/images/projects/thumbs/malware.png", "Malware");
         $malware->addType($projectTypes[ProjectType::$game]);
         $malware->addType($projectTypes[ProjectType::$desktop]);
+        $malware->addInfoVideo('https://youtu.be/oBLA-D2_xPM', "/images/projects/thumbs/malware.png");
 
         $projectCollection1->addProject($seamlessTimecard);
         $projectCollection1->addProject($seamlessPos);
