@@ -79,8 +79,8 @@ class ProjectType
         $projectTypes[ProjectType::$web] = new ProjectType(ProjectType::$web, "Web", "language");
         $projectTypes[ProjectType::$mobile] = new ProjectType(ProjectType::$mobile, "Mobile", "phone_android");
         $projectTypes[ProjectType::$desktop] = new ProjectType(ProjectType::$desktop, "Desktop", "desktop_windows");
-        $projectTypes[ProjectType::$iot] = new ProjectType(ProjectType::$iot, "IoT", "devices_other");
         $projectTypes[ProjectType::$game] = new ProjectType(ProjectType::$game, "Games", "videogame_asset");
+        $projectTypes[ProjectType::$iot] = new ProjectType(ProjectType::$iot, "IoT", "devices_other");
 
         return $projectTypes;
     }
@@ -335,13 +335,29 @@ class HomeController extends Controller
         $wiiPCRemote->addType($projectTypes[ProjectType::$desktop]);
 
         $sauCricketGame = new ProjectData("sau_cricket_game", "/images/projects/thumbs/sau_cricket_game.jpg", "SAU Cricket Game");
-        $sauCricketGame->addType($projectTypes[ProjectType::$desktop]);
         $sauCricketGame->addType($projectTypes[ProjectType::$game]);
+        $sauCricketGame->addType($projectTypes[ProjectType::$desktop]);
 
         $repulse = new ProjectData("repulse", "/images/projects/thumbs/repulse.jpg", "Repulse");
-        $repulse->addType($projectTypes[ProjectType::$desktop]);
         $repulse->addType($projectTypes[ProjectType::$game]);
+        $repulse->addType($projectTypes[ProjectType::$desktop]);
 
+        $lightningWizard = new ProjectData("lightning_wizard", "/images/projects/thumbs/lightning_wizard.png", "Lightning Wizard");
+        $lightningWizard->addType($projectTypes[ProjectType::$game]);
+        $lightningWizard->addType($projectTypes[ProjectType::$desktop]);
+        $lightningWizard->addInfoVideo("https://www.youtube.com/watch?v=sVsUsFzDj1w", "/storage/project_info/lightning_wizard/thumbs/1_windows_2.png");
+
+        $cashFlow = new ProjectData("cash_flow", "/images/projects/thumbs/cash_flow.png", "Cash Flow");
+        $cashFlow->addType($projectTypes[ProjectType::$game]);
+        $cashFlow->addType($projectTypes[ProjectType::$desktop]);
+
+        $peckyTheWoodpecker = new ProjectData("pecky_the_woodpecker", "/images/projects/thumbs/pecky_the_woodpecker.png", "Pecky the Woodpecker");
+        $peckyTheWoodpecker->addType($projectTypes[ProjectType::$game]);
+        $peckyTheWoodpecker->addType($projectTypes[ProjectType::$desktop]);
+
+        $malware = new ProjectData("malware", "/images/projects/thumbs/malware.png", "Malware");
+        $malware->addType($projectTypes[ProjectType::$game]);
+        $malware->addType($projectTypes[ProjectType::$desktop]);
 
         $projectCollection1->addProject($seamlessTimecard);
         $projectCollection1->addProject($seamlessPos);
@@ -357,8 +373,12 @@ class HomeController extends Controller
         $projectCollection1->addProject($miniRobot);
         $projectCollection1->addProject($ironManGlove);
         $projectCollection1->addProject($wiiPCRemote);
-        $projectCollection1->addProject($sauCricketGame);
+        $projectCollection1->addProject($malware);
+        $projectCollection1->addProject($lightningWizard);
+        $projectCollection1->addProject($cashFlow);
+        $projectCollection1->addProject($peckyTheWoodpecker);
         $projectCollection1->addProject($repulse);
+        $projectCollection1->addProject($sauCricketGame);
 
         return [
             $projectCollection1
@@ -387,7 +407,7 @@ class HomeController extends Controller
         $platformsSkillSet->addSkill(new SkillData("Game Development", 4, 80, 'material-icons', 'videogame_asset'));
         $platformsSkillSet->addSkill(new SkillData("Internet of Things", 2, 65, 'material-icons', 'devices_other'));
         $platformsSkillSet->addSkill(new SkillData("Unity3D", 3, 80, 'icon-unity'));
-        $platformsSkillSet->addSkill(new SkillData("jQuery", 6, 85, 'icon-jquery'));
+        $platformsSkillSet->addSkill(new SkillData("jQuery", 5, 85, 'icon-jquery'));
         $platformsSkillSet->addSkill(new SkillData("React JS", 2, 70, 'icon-reactjs'));
         $platformsSkillSet->addSkill(new SkillData("TypeScript", 2, 85, 'devicon-typescript-plain'));
         $platformsSkillSet->addSkill(new SkillData("Laravel", 3, 75, 'icon-laravel'));
