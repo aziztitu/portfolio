@@ -337,10 +337,12 @@ class HomeController extends Controller
         $sauCricketGame = new ProjectData("sau_cricket_game", "/images/projects/thumbs/sau_cricket_game.jpg", "SAU Cricket Game");
         $sauCricketGame->addType($projectTypes[ProjectType::$game]);
         $sauCricketGame->addType($projectTypes[ProjectType::$desktop]);
+        $sauCricketGame->addInfoVideo('https://youtu.be/zhzGeWcu1QM', "/images/projects/thumbs/sau_cricket_game.jpg");
 
         $repulse = new ProjectData("repulse", "/images/projects/thumbs/repulse.jpg", "Repulse");
         $repulse->addType($projectTypes[ProjectType::$game]);
         $repulse->addType($projectTypes[ProjectType::$desktop]);
+        $repulse->addInfoVideo('https://youtu.be/m3kVQgBfsVU', "/images/projects/thumbs/repulse.jpg");
 
         $lightningWizard = new ProjectData("lightning_wizard", "/images/projects/thumbs/lightning_wizard.png", "Lightning Wizard");
         $lightningWizard->addType($projectTypes[ProjectType::$game]);
@@ -350,10 +352,12 @@ class HomeController extends Controller
         $cashFlow = new ProjectData("cash_flow", "/images/projects/thumbs/cash_flow.png", "Cash Flow");
         $cashFlow->addType($projectTypes[ProjectType::$game]);
         $cashFlow->addType($projectTypes[ProjectType::$desktop]);
+        $cashFlow->addInfoVideo('https://youtu.be/h2acXLvO_3M', "/images/projects/thumbs/cash_flow.png");
 
         $peckyTheWoodpecker = new ProjectData("pecky_the_woodpecker", "/images/projects/thumbs/pecky_the_woodpecker.png", "Pecky the Woodpecker");
         $peckyTheWoodpecker->addType($projectTypes[ProjectType::$game]);
         $peckyTheWoodpecker->addType($projectTypes[ProjectType::$desktop]);
+        $peckyTheWoodpecker->addInfoVideo('https://youtu.be/7mW3DFOBf50', "/images/projects/thumbs/pecky_the_woodpecker.png");
 
         $malware = new ProjectData("malware", "/images/projects/thumbs/malware.png", "Malware");
         $malware->addType($projectTypes[ProjectType::$game]);
